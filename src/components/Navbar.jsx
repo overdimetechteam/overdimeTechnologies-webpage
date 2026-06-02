@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 
@@ -13,11 +13,25 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const lastY = useRef(0)
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 20)
+      if (y < 80) {
+        setVisible(true)
+      } else if (y > lastY.current + 8) {
+        setVisible(false)   // scrolling down — hide
+        setOpen(false)
+      } else if (y < lastY.current - 8) {
+        setVisible(true)    // scrolling up — show
+      }
+      lastY.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -29,15 +43,16 @@ export default function Navbar() {
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.95)',
+      background: scrolled ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.95)',
       backdropFilter: 'blur(12px)',
       boxShadow: scrolled ? '0 2px 20px rgba(10,37,64,0.1)' : '0 1px 0 rgba(10,37,64,0.06)',
-      transition: 'all 0.3s ease',
+      transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+      transition: 'transform 0.35s ease, box-shadow 0.3s ease, background 0.3s ease',
     }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 100 }}>
         {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/logo.png" alt="Overdime Technologies" style={{ height: 44, width: 'auto' }} />
+          <img src="/logo.jpg" alt="Overdime Technologies" style={{ height: 82, width: 'auto' }} />
         </Link>
 
         {/* Desktop nav */}
@@ -77,20 +92,13 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div style={{
-          background: '#fff',
-          borderTop: '1px solid #E5E7EB',
-          padding: '16px 24px 24px',
-        }}>
+        <div style={{ background: '#fff', borderTop: '1px solid #E5E7EB', padding: '16px 24px 24px' }}>
           {links.map(l => (
             <Link
               key={l.to}
               to={l.to}
               style={{
-                display: 'block',
-                padding: '12px 0',
-                fontWeight: 500,
-                fontSize: 16,
+                display: 'block', padding: '12px 0', fontWeight: 500, fontSize: 16,
                 color: location.pathname === l.to ? '#00B0ED' : '#1F2937',
                 borderBottom: '1px solid #F3F4F6',
               }}

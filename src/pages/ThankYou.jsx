@@ -3,7 +3,7 @@ import { CheckCircle, ArrowRight, Phone, MessageCircle } from 'lucide-react'
 
 export default function ThankYou() {
   return (
-    <div style={{ minHeight: '100vh', background: '#FAF7F2', display: 'flex', alignItems: 'center', padding: '120px 0 80px' }}>
+    <div style={{ minHeight: '100vh', background: '#F0F2F5', display: 'flex', alignItems: 'center', padding: '120px 0 80px' }}>
       <div className="container" style={{ textAlign: 'center' }}>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           {/* Icon */}
@@ -74,7 +74,7 @@ export default function ThankYou() {
             </div>
           </div>
 
-          <Link to="/" className="btn-primary" style={{ fontSize: 16 }}>
+          <Link to="/" className="btn-gold" style={{ fontSize: 16 }}>
             Back to Homepage <ArrowRight size={16} />
           </Link>
         </div>

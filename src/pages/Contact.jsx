@@ -60,7 +60,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <section className="section" style={{ background: '#FAF7F2' }} id="form">
+      <section className="section" style={{ background: '#F0F2F5' }} id="form">
         <div className="container">
           <div className="grid-2" style={{ gap: 64, alignItems: 'flex-start' }}>
             {/* Form */}
@@ -110,7 +110,7 @@ export default function Contact() {
                 </div>
 
                 <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                  <button type="submit" className="btn-primary" style={{ flex: 1, justifyContent: 'center', fontSize: 16, opacity: submitting ? 0.7 : 1 }} disabled={submitting}>
+                  <button type="submit" className="btn-gold" style={{ flex: 1, justifyContent: 'center', fontSize: 16, opacity: submitting ? 0.7 : 1 }} disabled={submitting}>
                     {submitting ? 'Sending...' : 'Send Message'}
                   </button>
                   <a href="mailto:info@overdimetechnologies.com?subject=Quote Request" className="btn-secondary" style={{ flex: 1, justifyContent: 'center', fontSize: 16 }}>
@@ -164,7 +164,7 @@ export default function Contact() {
           <h2>Ready to Transform Your Operations?</h2>
           <p>Our team is here to help you identify the right intelligent solutions for your business.</p>
           <div className="btn-group">
-            <a href="#form" className="btn-white">Schedule a Free Consultation</a>
+            <a href="#form" className="btn-gold">Schedule a Free Consultation</a>
             <a href="mailto:info@overdimetechnologies.com?subject=Quote Request" className="btn-outline-white">Request a Quote</a>
           </div>
         </div>

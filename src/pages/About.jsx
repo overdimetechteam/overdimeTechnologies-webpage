@@ -32,7 +32,7 @@ export default function About() {
       </div>
 
       {/* Our Story */}
-      <section className="section" style={{ background: '#fff' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           <div className="grid-2" style={{ gap: 64, alignItems: 'center' }}>
             <div>
@@ -76,7 +76,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="section" style={{ background: '#FAF7F2' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <span className="section-label">Our Values</span>
@@ -97,7 +97,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="section" id="team" style={{ background: '#fff' }}>
+      <section className="section" id="team" style={{ background: '#fff' }} >
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <span className="section-label">Our Team</span>
@@ -138,7 +138,7 @@ export default function About() {
       </section>
 
       {/* Why Choose Overdime */}
-      <section className="section" style={{ background: '#FAF7F2' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           <div className="grid-2" style={{ gap: 64, alignItems: 'center' }}>
             <div>
@@ -173,7 +173,7 @@ export default function About() {
           <h2>Ready to Work With a Partner Who Truly Understands Your Business?</h2>
           <p>Let's have an open conversation about your goals and how intelligent solutions can help you achieve them.</p>
           <div className="btn-group">
-            <Link to="/contact" className="btn-white">Schedule a Free Consultation</Link>
+            <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
             <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Talk to Us</a>
           </div>
         </div>

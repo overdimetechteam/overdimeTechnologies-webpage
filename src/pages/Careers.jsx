@@ -1,5 +1,15 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Target, TrendingUp, Monitor, DollarSign, Globe, ExternalLink } from 'lucide-react'
+
+const STORAGE_KEY = 'overdime_jobs'
+const defaultPositions = [
+  { id: 1, title: 'Senior Automation Engineer', subtitle: 'RPA / Workato / UiPath', type: 'Full-time', level: 'Senior', active: true },
+  { id: 2, title: 'AI Solutions Architect', subtitle: 'OpenAI / Claude / Gemini', type: 'Full-time', level: 'Senior', active: true },
+  { id: 3, title: 'Full Stack Developer', subtitle: 'React / Node / Python', type: 'Full-time / Freelance', level: 'Mid–Senior', active: true },
+  { id: 4, title: 'Business Analyst', subtitle: 'Process Automation', type: 'Full-time', level: 'Mid', active: true },
+  { id: 5, title: 'Project Manager', subtitle: 'Digital Transformation', type: 'Full-time', level: 'Senior', active: true },
+]
 
 const perks = [
   { icon: <Target size={28} color="#00B0ED" />, title: 'Meaningful Impact', desc: 'Contribute to projects that transform how organisations operate and grow.' },
@@ -9,15 +19,24 @@ const perks = [
   { icon: <Globe size={28} color="#00B0ED" />, title: 'Global Exposure', desc: 'Opportunity to work with local and international clients while being based in Sri Lanka.' },
 ]
 
-const positions = [
-  { title: 'Senior Automation Engineer', subtitle: 'RPA / Workato / UiPath', type: 'Full-time', level: 'Senior' },
-  { title: 'AI Solutions Architect', subtitle: 'OpenAI / Claude / Gemini', type: 'Full-time', level: 'Senior' },
-  { title: 'Full Stack Developer', subtitle: 'React / Node / Python', type: 'Full-time / Freelance', level: 'Mid–Senior' },
-  { title: 'Business Analyst', subtitle: 'Process Automation', type: 'Full-time', level: 'Mid' },
-  { title: 'Project Manager', subtitle: 'Digital Transformation', type: 'Full-time', level: 'Senior' },
-]
-
 export default function Careers() {
+  const [positions, setPositions] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      return stored ? JSON.parse(stored).filter(j => j.active) : defaultPositions.filter(j => j.active)
+    } catch { return defaultPositions }
+  })
+
+  useEffect(() => {
+    const sync = () => {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY)
+        if (stored) setPositions(JSON.parse(stored).filter(j => j.active))
+      } catch {}
+    }
+    window.addEventListener('storage', sync)
+    return () => window.removeEventListener('storage', sync)
+  }, [])
   return (
     <div>
       {/* Hero */}
@@ -67,20 +86,20 @@ export default function Careers() {
       </section>
 
       {/* Perks */}
-      <section className="section" style={{ background: '#FAF7F2' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <span className="section-label">Why Join Overdime</span>
             <h2 style={{ fontSize: 'clamp(26px, 3.5vw, 40px)', marginTop: 8 }}>What Makes Working Here Different</h2>
           </div>
-          <div className="grid-3" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16 }}>
             {perks.map(p => (
-              <div key={p.title} className="card" style={{ textAlign: 'center', background: '#fff' }}>
-                <div style={{ width: 60, height: 60, borderRadius: '50%', background: '#FAF7F2', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+              <div key={p.title} style={{ background: '#fff', borderRadius: 14, padding: '24px 16px', textAlign: 'center', boxShadow: '0 2px 12px rgba(10,37,64,0.06)' }}>
+                <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#F0F2F5', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px' }}>
                   {p.icon}
                 </div>
-                <h3 style={{ fontSize: 18, marginBottom: 12 }}>{p.title}</h3>
-                <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.7 }}>{p.desc}</p>
+                <h3 style={{ fontSize: 14, marginBottom: 8, lineHeight: 1.3 }}>{p.title}</h3>
+                <p style={{ color: '#4B5563', fontSize: 12, lineHeight: 1.6 }}>{p.desc}</p>
               </div>
             ))}
           </div>
@@ -100,7 +119,7 @@ export default function Careers() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 800, margin: '0 auto' }}>
             {positions.map(pos => (
-              <div key={pos.title} style={{ background: '#FAF7F2', borderRadius: 16, padding: '24px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #E5E7EB', flexWrap: 'wrap', gap: 16 }}>
+              <div key={pos.id || pos.title} style={{ background: '#fff', borderRadius: 16, padding: '24px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #E5E7EB', flexWrap: 'wrap', gap: 16 }}>
                 <div>
                   <h3 style={{ fontSize: 18, marginBottom: 4 }}>{pos.title}</h3>
                   <p style={{ color: '#4B5563', fontSize: 14 }}>{pos.subtitle}</p>
@@ -135,7 +154,7 @@ export default function Careers() {
           <h2>Ready to Shape the Future of Intelligent Automation?</h2>
           <p>If you're excited about solving real business challenges with smart technology, we'd love to meet you.</p>
           <div className="btn-group">
-            <a href="#positions" className="btn-white">View Open Positions</a>
+            <a href="#positions" className="btn-gold">View Open Positions</a>
             <a href="mailto:info@overdimetechnologies.com?subject=CV Submission" className="btn-outline-white">Send Us Your CV</a>
           </div>
         </div>

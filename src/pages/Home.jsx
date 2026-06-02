@@ -1,5 +1,25 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Zap, Bot, Globe, Database, Users, TrendingUp, CheckCircle, Quote, ChevronRight } from 'lucide-react'
+
+const heroSlides = [
+  {
+    url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80',
+    credit: 'Team Collaboration',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80',
+    credit: 'Modern Office',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80',
+    credit: 'Digital Technology',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&q=80',
+    credit: 'Innovation',
+  },
+]
 
 const solutions = [
   {
@@ -46,68 +66,131 @@ const partners = ['UiPath', 'Microsoft', 'OpenAI', 'Google Gemini', 'Automation 
 const clients = ['Dialog', 'David Pieris', 'Colombo Fort Group']
 
 export default function Home() {
+  const [slide, setSlide] = useState(0)
+  const [prevSlide, setPrevSlide] = useState(null)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        setPrevSlide(null)
+        setSlide(s => (s + 1) % heroSlides.length)
+        setFading(false)
+      }, 800)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const goToSlide = (i) => {
+    if (i === slide) return
+    setPrevSlide(slide)
+    setFading(true)
+    setTimeout(() => {
+      setPrevSlide(null)
+      setSlide(i)
+      setFading(false)
+    }, 800)
+  }
+
   return (
     <div>
       {/* ── HERO ── */}
       <section style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #0A2540 0%, #0d3460 50%, #0A2540 100%)',
+        height: 'calc(100vh - 100px)',
         display: 'flex',
         alignItems: 'center',
-        padding: '120px 0 80px',
+        padding: 0,
         position: 'relative',
         overflow: 'hidden',
       }}>
-        {/* Decorative circles */}
-        <div style={{ position: 'absolute', top: -100, right: -100, width: 600, height: 600, borderRadius: '50%', background: 'rgba(0,176,237,0.06)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -150, left: -150, width: 500, height: 500, borderRadius: '50%', background: 'rgba(244,201,93,0.05)', pointerEvents: 'none' }} />
+        {/* Sliding background images */}
+        {heroSlides.map((s, i) => (
+          <div key={i} style={{
+            position: 'absolute', inset: 0,
+            backgroundImage: `url(${s.url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: i === slide ? (fading ? 0 : 1) : (i === prevSlide ? (fading ? 1 : 0) : 0),
+            transition: 'opacity 0.8s ease-in-out',
+            zIndex: 0,
+          }} />
+        ))}
 
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Subtle left-side text-legibility gradient only */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.05) 100%)', zIndex: 1 }} />
+
+        {/* Decorative circles */}
+        <div style={{ position: 'absolute', top: -100, right: -100, width: 600, height: 600, borderRadius: '50%', background: 'rgba(0,176,237,0.06)', pointerEvents: 'none', zIndex: 2 }} />
+        <div style={{ position: 'absolute', bottom: -150, left: -150, width: 500, height: 500, borderRadius: '50%', background: 'rgba(244,201,93,0.05)', pointerEvents: 'none', zIndex: 2 }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 3 }}>
           <div style={{ maxWidth: 780 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(0,176,237,0.15)', border: '1px solid rgba(0,176,237,0.3)', borderRadius: 100, padding: '6px 16px', marginBottom: 28 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(0,176,237,0.15)', border: '1px solid rgba(0,176,237,0.3)', borderRadius: 100, padding: '5px 14px', marginBottom: 16 }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#00B0ED' }} />
-              <span style={{ color: '#00B0ED', fontSize: 13, fontWeight: 600, letterSpacing: '0.06em' }}>BOUTIQUE AUTOMATION AGENCY</span>
+              <span style={{ color: '#00B0ED', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em' }}>BOUTIQUE AUTOMATION AGENCY</span>
             </div>
 
-            <h1 style={{ color: '#fff', fontSize: 'clamp(38px, 6vw, 72px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.1, marginBottom: 24 }}>
+            <h1 style={{ color: '#fff', fontSize: 'clamp(30px, 4.5vw, 56px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.1, marginBottom: 16 }}>
               Intelligent Automation<br />
               <span style={{ color: '#00B0ED' }}>for Enterprise Growth</span>
             </h1>
 
-            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 'clamp(16px, 2vw, 20px)', lineHeight: 1.7, marginBottom: 40, maxWidth: 620 }}>
+            <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 'clamp(14px, 1.4vw, 17px)', lineHeight: 1.65, marginBottom: 28, maxWidth: 560 }}>
               We help medium and large enterprises streamline operations, implement AI-powered solutions, and build custom systems that deliver measurable efficiency and sustainable growth — locally and globally.
             </p>
 
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 64 }}>
-              <Link to="/contact" className="btn-primary" style={{ fontSize: 16, padding: '16px 32px' }}>
-                Schedule a Free Consultation <ArrowRight size={18} />
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 32 }}>
+              <Link to="/contact" className="btn-primary" style={{ fontSize: 15, padding: '13px 26px' }}>
+                Schedule a Free Consultation <ArrowRight size={16} />
               </Link>
-              <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white" style={{ fontSize: 16, padding: '16px 32px' }}>
+              <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-gold" style={{ fontSize: 15, padding: '13px 26px' }}>
                 Talk to Us
               </a>
             </div>
 
             {/* Trusted by */}
             <div>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 16 }}>Trusted by leading organisations</p>
-              <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'center' }}>
+              <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>Trusted by leading organisations</p>
+              <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
                 {clients.map(c => (
-                  <span key={c} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 15, fontWeight: 600, fontFamily: 'Plus Jakarta Sans' }}>{c}</span>
+                  <span key={c} style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, fontWeight: 600, fontFamily: 'Plus Jakarta Sans' }}>{c}</span>
                 ))}
               </div>
             </div>
           </div>
         </div>
+
+        {/* Slide dots */}
+        <div style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 10, zIndex: 3 }}>
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToSlide(i)}
+              aria-label={`Slide ${i + 1}`}
+              style={{
+                width: i === slide ? 28 : 10,
+                height: 10,
+                borderRadius: 100,
+                background: i === slide ? '#F4C95D' : 'rgba(255,255,255,0.35)',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                transition: 'all 0.3s ease',
+              }}
+            />
+          ))}
+        </div>
       </section>
 
       {/* ── STATS ── */}
-      <section style={{ background: '#fff', padding: '64px 0', borderBottom: '1px solid #E5E7EB' }}>
+      <section style={{ background: '#F0F2F5', padding: '64px 0', borderBottom: '1px solid #E5E7EB' }}>
         <div className="container">
           <div className="grid-4">
             {stats.map(s => (
               <div key={s.value} style={{ textAlign: 'center', padding: '24px 16px' }}>
                 <div style={{ fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 800, color: '#00B0ED', fontFamily: 'Plus Jakarta Sans', lineHeight: 1 }}>{s.value}</div>
-                <div style={{ color: '#4B5563', fontSize: 14, marginTop: 8, lineHeight: 1.5 }}>{s.label}</div>
+                <div style={{ color: '#8A8A8A', fontSize: 14, marginTop: 8, lineHeight: 1.5 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -115,7 +198,7 @@ export default function Home() {
       </section>
 
       {/* ── VALUE PROPOSITION ── */}
-      <section className="section" style={{ background: '#FAF7F2' }}>
+      <section className="section" style={{ background: '#fff' }}>
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: 64 }}>
             <div>
@@ -152,7 +235,7 @@ export default function Home() {
       </section>
 
       {/* ── CORE SOLUTIONS ── */}
-      <section className="section" style={{ background: '#fff' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <span className="section-label">Our Core Solutions</span>
@@ -169,9 +252,12 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div style={{ textAlign: 'center', marginTop: 48 }}>
+          <div style={{ textAlign: 'center', marginTop: 48, display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/solutions" className="btn-primary">
               Explore All Solutions <ArrowRight size={16} />
+            </Link>
+            <Link to="/contact" className="btn-gold">
+              Get a Free Consultation <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -202,7 +288,7 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="section" style={{ background: '#FAF7F2' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <span className="section-label">What Our Clients Say</span>
@@ -241,12 +327,12 @@ export default function Home() {
       </section>
 
       {/* ── TECHNOLOGY PARTNERS ── */}
-      <section style={{ background: '#fff', padding: '56px 0', borderTop: '1px solid #E5E7EB' }}>
+      <section style={{ background: '#F0F2F5', padding: '56px 0', borderTop: '1px solid #E5E7EB' }}>
         <div className="container">
-          <p style={{ textAlign: 'center', color: '#9CA3AF', fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 36 }}>Technology Partners</p>
+          <p style={{ textAlign: 'center', color: '#8A8A8A', fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 36 }}>Technology Partners</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center' }}>
             {partners.map(p => (
-              <div key={p} style={{ padding: '12px 24px', background: '#F3F4F6', borderRadius: 8, fontWeight: 600, color: '#4B5563', fontSize: 14, border: '1px solid #E5E7EB' }}>
+              <div key={p} style={{ padding: '12px 24px', background: '#fff', borderRadius: 8, fontWeight: 600, color: '#4B5563', fontSize: 14, border: '1px solid #d1d1d1' }}>
                 {p}
               </div>
             ))}
@@ -260,7 +346,7 @@ export default function Home() {
           <h2>Ready to Transform Your Operations?</h2>
           <p>Let's discuss how intelligent automation can create real value for your organisation.</p>
           <div className="btn-group">
-            <Link to="/contact" className="btn-white">Schedule a Free Consultation</Link>
+            <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
             <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Talk to Us</a>
           </div>
         </div>

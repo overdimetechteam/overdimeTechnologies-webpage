@@ -232,7 +232,7 @@ export default function Solutions() {
         </div>
       </div>
 
-      <section className="section" style={{ background: '#FAF7F2' }}>
+      <section className="section" style={{ background: '#F0F2F5' }}>
         <div className="container">
           {solutions.map(sol => (
             <SolutionCard
@@ -250,7 +250,7 @@ export default function Solutions() {
           <h2>Not Sure Where to Begin?</h2>
           <p>Our team will help you identify the highest-impact opportunities for your organisation.</p>
           <div className="btn-group">
-            <Link to="/contact" className="btn-white">Schedule a Free Consultation</Link>
+            <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
             <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Talk to Us</a>
           </div>
         </div>
