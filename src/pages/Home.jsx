@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Zap, Bot, Globe, Database, Users, TrendingUp, CheckCircle, Quote, ChevronRight } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
+
+const heroSlides = [
+  { url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80' },
+  { url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80' },
+  { url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80' },
+  { url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&q=80' },
+]
 
 const solutions = [
   {
@@ -52,40 +60,65 @@ const clients = [
 ]
 
 export default function Home() {
+  const [slide, setSlide] = useState(0)
+  const [prevSlide, setPrevSlide] = useState(null)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        setPrevSlide(null)
+        setSlide(s => (s + 1) % heroSlides.length)
+        setFading(false)
+      }, 800)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const goToSlide = (i) => {
+    if (i === slide) return
+    setPrevSlide(slide)
+    setFading(true)
+    setTimeout(() => {
+      setPrevSlide(null)
+      setSlide(i)
+      setFading(false)
+    }, 800)
+  }
+
   return (
     <PageTransition>
     <div>
       {/* ── HERO ── */}
       <section className="hero-section">
-        {/* Base gradient */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #040d1a 0%, #0A2540 50%, #0d2d4a 100%)', zIndex: 0 }} />
+        {/* Slideshow background — clipped in its own container */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+          {heroSlides.map((s, i) => (
+            <div key={i} style={{
+              position: 'absolute', inset: 0,
+              backgroundImage: `url(${s.url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: i === slide ? (fading ? 0 : 1) : (i === prevSlide ? (fading ? 1 : 0) : 0),
+              transition: 'opacity 0.8s ease-in-out',
+            }} />
+          ))}
+          {/* Overlay for text legibility */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.32) 55%, rgba(0,0,0,0.1) 100%)' }} />
+        </div>
 
-        {/* Glowing orbs */}
-        <div className="hero-orb-1" style={{ position: 'absolute', top: '-15%', right: '-5%', width: 720, height: 720, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,176,237,0.22) 0%, transparent 65%)', zIndex: 1, pointerEvents: 'none' }} />
-        <div className="hero-orb-2" style={{ position: 'absolute', bottom: '-25%', left: '-8%', width: 820, height: 820, borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,201,93,0.13) 0%, transparent 60%)', zIndex: 1, pointerEvents: 'none' }} />
-        <div className="hero-orb-3" style={{ position: 'absolute', top: '25%', left: '32%', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,176,237,0.09) 0%, transparent 65%)', zIndex: 1, pointerEvents: 'none' }} />
-
-        {/* Dot grid */}
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '38px 38px', zIndex: 2, pointerEvents: 'none' }} />
-
-        {/* Animated rings */}
-        <div className="hero-ring" style={{ position: 'absolute', top: '12%', right: '10%', width: 240, height: 240, borderRadius: '50%', border: '1px solid rgba(0,176,237,0.18)', zIndex: 2, pointerEvents: 'none' }} />
-        <div className="hero-ring-slow" style={{ position: 'absolute', top: '8%', right: '7%', width: 340, height: 340, borderRadius: '50%', border: '1px solid rgba(0,176,237,0.08)', zIndex: 2, pointerEvents: 'none' }} />
-        <div className="hero-ring" style={{ position: 'absolute', bottom: '18%', right: '22%', width: 160, height: 160, borderRadius: '50%', border: '1px solid rgba(244,201,93,0.14)', zIndex: 2, pointerEvents: 'none' }} />
-
-        {/* Floating accent dots */}
-        {[
-          { x: '73%', y: '22%', s: 5, c: 'rgba(0,176,237,0.55)', cls: 'hero-orb-1' },
-          { x: '84%', y: '52%', s: 4, c: 'rgba(244,201,93,0.45)', cls: 'hero-orb-2' },
-          { x: '67%', y: '68%', s: 6, c: 'rgba(0,176,237,0.40)', cls: 'hero-orb-3' },
-          { x: '90%', y: '36%', s: 3, c: 'rgba(255,255,255,0.28)', cls: 'hero-orb-2' },
-          { x: '78%', y: '78%', s: 4, c: 'rgba(244,201,93,0.35)', cls: 'hero-orb-1' },
-        ].map((d, i) => (
-          <div key={i} className={d.cls} style={{ position: 'absolute', left: d.x, top: d.y, width: d.s, height: d.s, borderRadius: '50%', background: d.c, zIndex: 2, pointerEvents: 'none' }} />
-        ))}
-
-        {/* Left text-legibility gradient */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(4,13,26,0.55) 0%, rgba(4,13,26,0.15) 55%, transparent 100%)', zIndex: 3 }} />
+        {/* Slide dots */}
+        <div style={{ position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 10, zIndex: 4 }}>
+          {heroSlides.map((_, i) => (
+            <button key={i} onClick={() => goToSlide(i)} aria-label={`Slide ${i + 1}`} style={{
+              width: i === slide ? 28 : 10, height: 10, borderRadius: 100,
+              background: i === slide ? '#F4C95D' : 'rgba(255,255,255,0.4)',
+              border: 'none', cursor: 'pointer', padding: 0,
+              transition: 'all 0.3s ease',
+            }} />
+          ))}
+        </div>
 
         <div className="container hero-container">
           <div className="hero-grid">

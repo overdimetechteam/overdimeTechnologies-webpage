@@ -38,6 +38,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setOpen(false)
+    setProgress(0)
     window.scrollTo(0, 0)
   }, [location.pathname])
 

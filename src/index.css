@@ -275,7 +275,8 @@ button {
 .page-hero {
   background: linear-gradient(135deg, var(--navy) 0%, #0d3460 100%);
   color: var(--white);
-  padding: 120px 0 80px;
+  margin-top: -100px;
+  padding: 220px 0 80px;
   text-align: center;
 }
 
@@ -360,13 +361,12 @@ button {
   align-items: center;
   padding: 0;
   position: relative;
-  overflow: hidden;
 }
 
 .hero-container {
   position: relative;
   z-index: 3;
-  padding-top: 90px;
+  padding-top: 130px;
   padding-bottom: 60px;
 }
 
@@ -425,13 +425,13 @@ button {
     grid-template-columns: repeat(4, 1fr);
     max-width: 100%;
   }
-  .hero-container { padding-top: 60px; padding-bottom: 48px; }
+  .hero-container { padding-top: 120px; padding-bottom: 48px; }
 }
 
 /* ── 768px ── */
 @media (max-width: 768px) {
   .hero-stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-container { padding-top: 40px; padding-bottom: 40px; }
+  .hero-container { padding-top: 110px; padding-bottom: 40px; }
 
   .perks-grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -440,7 +440,7 @@ button {
 
   .form-card { padding: 28px 20px; }
 
-  .page-hero { padding: 80px 0 48px; }
+  .page-hero { padding: 160px 0 48px; }
   .page-hero p { font-size: 16px; }
 
   .section-label { font-size: 18px; padding: 8px 14px; }
