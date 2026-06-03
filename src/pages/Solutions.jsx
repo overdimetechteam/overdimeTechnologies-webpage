@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { ArrowRight, Zap, Bot, Globe, Database, TrendingUp, Users, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react'
+import PageTransition from '../components/PageTransition'
+import { FadeUp } from '../components/Animate'
 
 const solutions = [
   {
@@ -9,21 +11,9 @@ const solutions = [
     title: 'Intelligent Process Automation (IPA)',
     overview: 'We help organisations transform complex operations into efficient, intelligent processes. Our IPA practice combines workflow automation, robotic process automation, and AI-driven decision-making to reduce manual effort and deliver measurable efficiency gains.',
     pillars: [
-      {
-        name: 'Business Process Automation',
-        desc: 'We digitise and automate end-to-end workflows, replacing manual and paper-based processes with structured, integrated digital systems.',
-        areas: 'Approval workflows, HR processes, procurement, finance operations, customer onboarding, and service request management.',
-      },
-      {
-        name: 'Robotic Process Automation (RPA)',
-        desc: 'We deploy reliable software robots to handle repetitive, rule-based tasks across departments.',
-        areas: 'Data entry, invoice & document processing, report generation, reconciliation, and legacy system interactions.',
-      },
-      {
-        name: 'Agentic AI',
-        desc: 'We implement intelligent AI agents capable of autonomous decision-making, task execution, and system interaction.',
-        areas: 'AI-powered virtual assistants, intelligent task orchestration, conversational AI, and AI-driven recommendations.',
-      },
+      { name: 'Business Process Automation', desc: 'We digitise and automate end-to-end workflows, replacing manual and paper-based processes with structured, integrated digital systems.', areas: 'Approval workflows, HR processes, procurement, finance operations, customer onboarding, and service request management.' },
+      { name: 'Robotic Process Automation (RPA)', desc: 'We deploy reliable software robots to handle repetitive, rule-based tasks across departments.', areas: 'Data entry, invoice & document processing, report generation, reconciliation, and legacy system interactions.' },
+      { name: 'Agentic AI', desc: 'We implement intelligent AI agents capable of autonomous decision-making, task execution, and system interaction.', areas: 'AI-powered virtual assistants, intelligent task orchestration, conversational AI, and AI-driven recommendations.' },
     ],
     value: ['Reduced human intervention', 'Faster decision-making', 'Enhanced customer engagement', 'Scalable intelligent automation'],
     tech: ['WorkHub24', 'UiPath', 'Automation Anywhere', 'Microsoft Power Automate', 'Microsoft PowerApps', 'Workato'],
@@ -220,41 +210,46 @@ export default function Solutions() {
   const [expanded, setExpanded] = useState('ipa')
 
   return (
-    <div>
-      <div className="page-hero">
-        <div className="container">
-          <span style={{ display: 'inline-block', background: 'rgba(0,176,237,0.2)', color: '#00B0ED', fontSize: 13, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '6px 14px', borderRadius: 100, marginBottom: 20 }}>Our Solutions</span>
-          <h1>Intelligent Solutions That Drive Real Business Performance</h1>
-          <p>We help growth-focused organisations streamline operations, reduce manual work, and unlock smarter decision-making through automation, AI, and tailored digital systems.</p>
-          <Link to="/contact" className="btn-primary" style={{ fontSize: 16 }}>
-            Schedule a Free Consultation <ArrowRight size={16} />
-          </Link>
-        </div>
-      </div>
-
-      <section className="section" style={{ background: '#F0F2F5' }}>
-        <div className="container">
-          {solutions.map(sol => (
-            <SolutionCard
-              key={sol.id}
-              sol={sol}
-              expanded={expanded === sol.id}
-              onToggle={() => setExpanded(expanded === sol.id ? null : sol.id)}
-            />
-          ))}
-        </div>
-      </section>
-
-      <div className="cta-banner">
-        <div className="container">
-          <h2>Not Sure Where to Begin?</h2>
-          <p>Our team will help you identify the highest-impact opportunities for your organisation.</p>
-          <div className="btn-group">
-            <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
-            <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Talk to Us</a>
+    <PageTransition>
+      <div>
+        <div className="page-hero">
+          <div className="container">
+            <span className="section-label">Our Solutions</span>
+            <h1>Intelligent Solutions That Drive Real Business Performance</h1>
+            <p>We help growth-focused organisations streamline operations, reduce manual work, and unlock smarter decision-making through automation, AI, and tailored digital systems.</p>
+            <Link to="/contact" className="btn-primary" style={{ fontSize: 16 }}>
+              Schedule a Free Consultation <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
+
+        <section className="section" style={{ background: '#F0F2F5' }}>
+          <div className="container">
+            {solutions.map((sol, i) => (
+              <FadeUp key={sol.id} delay={i * 0.07}>
+                <SolutionCard
+                  sol={sol}
+                  expanded={expanded === sol.id}
+                  onToggle={() => setExpanded(expanded === sol.id ? null : sol.id)}
+                />
+              </FadeUp>
+            ))}
+          </div>
+        </section>
+
+        <FadeUp>
+          <div className="cta-banner">
+            <div className="container">
+              <h2>Not Sure Where to Begin?</h2>
+              <p>Our team will help you identify the highest-impact opportunities for your organisation.</p>
+              <div className="btn-group">
+                <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
+                <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Talk to Us</a>
+              </div>
+            </div>
+          </div>
+        </FadeUp>
       </div>
-    </div>
+    </PageTransition>
   )
 }
