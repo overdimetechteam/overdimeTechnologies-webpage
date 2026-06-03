@@ -5,6 +5,54 @@ import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
 import AnimatedPageHero from '../components/AnimatedPageHero'
 
+// Logo map — keys must match tech[] strings exactly
+const techLogos = {
+  'WorkHub24':              '/logos/WorkHub24.png',
+  'UiPath':                 '/logos/uipath.jpg',
+  'Automation Anywhere':    '/logos/Automation%20Anywhere.png',
+  'Microsoft Power Automate': '/logos/Microsoft.jpg',
+  'Microsoft PowerApps':    '/logos/Microsoft.jpg',
+  'Workato':                '/logos/workato.jpg',
+  'Google Gemini':          '/logos/GoogleGemini.png',
+  'OpenAI':                 '/logos/openAi.png',
+  'Odoo':                   '/logos/odoo.jpg',
+  'Zoho':                   '/logos/Zoho.png',
+  // Not yet uploaded — will be replaced once files are added to /logos/
+  'N8N':                    '/logos/n8n.png',
+  'Jotform AI':             '/logos/jotform.png',
+  'Anthropic Claude':       '/logos/anthropic.png',
+}
+
+function TechBadge({ name }) {
+  const logo = techLogos[name]
+  const [imgFailed, setImgFailed] = useState(false)
+
+  if (logo && !imgFailed) {
+    return (
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: '#fff', border: '1px solid #E5E7EB', borderRadius: 10,
+        padding: '8px 14px', height: 52, minWidth: 80,
+        boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
+      }}>
+        <img
+          src={logo}
+          alt={name}
+          style={{ maxHeight: 30, maxWidth: 90, objectFit: 'contain' }}
+          onError={() => setImgFailed(true)}
+        />
+      </div>
+    )
+  }
+  return (
+    <span style={{
+      background: '#F0F2F5', color: '#0A2540', border: '1px solid #E5E7EB',
+      padding: '8px 14px', borderRadius: 10, fontSize: 13, fontWeight: 600,
+      height: 52, display: 'inline-flex', alignItems: 'center',
+    }}>{name}</span>
+  )
+}
+
 const solutions = [
   {
     id: 'ipa',
@@ -194,10 +242,8 @@ function SolutionCard({ sol, expanded, onToggle }) {
           {sol.tech && (
             <div>
               <h4 style={{ color: '#0A2540', marginBottom: 12, fontSize: 15 }}>Platforms & Technologies</h4>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {sol.tech.map(t => (
-                  <span key={t} style={{ background: '#0A2540', color: '#fff', padding: '6px 14px', borderRadius: 6, fontSize: 13, fontWeight: 500 }}>{t}</span>
-                ))}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
+                {sol.tech.map(t => <TechBadge key={t} name={t} />)}
               </div>
             </div>
           )}

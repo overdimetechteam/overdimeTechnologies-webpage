@@ -1,9 +1,20 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import emailjs from '@emailjs/browser'
 import { Mail, Phone, MapPin, Clock, MessageCircle, Calendar, ArrowRight } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
 import AnimatedPageHero from '../components/AnimatedPageHero'
+
+// ─── EmailJS credentials ───────────────────────────────────────────
+// 1. Sign up free at https://www.emailjs.com
+// 2. Add an Email Service (Gmail / Outlook / etc.)
+// 3. Create an Email Template — use the variable names below
+// 4. Paste your IDs here
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'   // e.g. 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'  // e.g. 'template_xyz789'
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'   // e.g. 'aBcDeFgHiJ...'
+// ──────────────────────────────────────────────────────────────────
 
 const services = ['Intelligent Process Automation', 'AI Integrated Solutions', 'Custom Web Applications', 'ERP Solutions', 'Digital Transformation Consultancy', 'Resource Augmentation', 'General Inquiry']
 
@@ -13,6 +24,8 @@ export default function Contact() {
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
 
+  const [emailError, setEmailError] = useState('')
+
   const validate = () => {
     const e = {}
     if (!form.name.trim()) e.name = 'Full name is required'
@@ -21,14 +34,49 @@ export default function Contact() {
     return e
   }
 
+  const sendEmail = async (subject) => {
+    const templateParams = {
+      subject,
+      from_name:    form.name,
+      company:      form.company,
+      from_email:   form.email,
+      phone:        form.phone  || 'Not provided',
+      service:      form.service || 'Not specified',
+      message:      form.message || 'No message provided',
+      reply_to:     form.email,
+    }
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY)
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setSubmitting(true)
-    await new Promise(r => setTimeout(r, 800))
-    setSubmitting(false)
-    navigate('/thank-you')
+    setEmailError('')
+    try {
+      await sendEmail('New Contact Form Submission — Overdime Technologies')
+      navigate('/thank-you')
+    } catch (err) {
+      setEmailError('Failed to send. Please email us directly at info@overdimetechnologies.com')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const handleQuote = async () => {
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setSubmitting(true)
+    setEmailError('')
+    try {
+      await sendEmail('Quote Request — Overdime Technologies')
+      navigate('/thank-you')
+    } catch (err) {
+      setEmailError('Failed to send. Please email us directly at info@overdimetechnologies.com')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const field = (key, label, type = 'text', placeholder = '') => (
@@ -104,13 +152,18 @@ export default function Contact() {
                       />
                     </div>
 
+                    {emailError && (
+                      <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: 8, padding: '12px 16px', marginBottom: 16, color: '#DC2626', fontSize: 14 }}>
+                        {emailError}
+                      </div>
+                    )}
                     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                       <button type="submit" className="btn-gold" style={{ flex: 1, justifyContent: 'center', fontSize: 16, opacity: submitting ? 0.7 : 1 }} disabled={submitting}>
                         {submitting ? 'Sending...' : 'Send Message'}
                       </button>
-                      <a href="mailto:info@overdimetechnologies.com?subject=Quote Request" className="btn-secondary" style={{ flex: 1, justifyContent: 'center', fontSize: 16 }}>
-                        Request a Quote
-                      </a>
+                      <button type="button" onClick={handleQuote} className="btn-secondary" style={{ flex: 1, justifyContent: 'center', fontSize: 16, opacity: submitting ? 0.7 : 1 }} disabled={submitting}>
+                        {submitting ? 'Sending...' : 'Request a Quote'}
+                      </button>
                     </div>
                   </form>
                 </div>

@@ -51,12 +51,23 @@ const stats = [
   { value: '3+', label: 'Enterprise clients in Fortune segments' },
 ]
 
-const partners = ['UiPath', 'Microsoft', 'OpenAI', 'Google Gemini', 'Automation Anywhere', 'Workato', 'Odoo', 'Zoho']
+const partners = [
+  { name: 'WorkHub24',           logo: '/logos/WorkHub24.png'                  },
+  { name: 'UiPath',              logo: '/logos/uipath.jpg'                     },
+  { name: 'Microsoft',           logo: '/logos/Microsoft.jpg'                  },
+  { name: 'OpenAI',              logo: '/logos/openAi.png'                     },
+  { name: 'Google Gemini',       logo: '/logos/GoogleGemini.png'               },
+  { name: 'Automation Anywhere', logo: '/logos/Automation%20Anywhere.png'      },
+  { name: 'Workato',             logo: '/logos/workato.jpg'                    },
+  { name: 'Odoo',                logo: '/logos/odoo.jpg'                       },
+  { name: 'Zoho',                logo: '/logos/Zoho.png'                       },
+]
 
 const clients = [
-  { name: 'Dialog',              logo: '/logos/dialog.png' },
-  { name: 'David Pieris',        logo: '/logos/david_peiris.png' },
-  { name: 'Colombo Fort Group',  logo: '/logos/cfgs.jpg' },
+  { name: 'Dialog',             logo: '/logos/dialog.jpg'        },
+  { name: 'David Pieris',       logo: '/logos/david_peiris.png'  },
+  { name: 'Colombo Fort Group', logo: '/logos/cfgs.jpg'          },
+  { name: 'Assetline',          logo: '/logos/assetline.png'     },
 ]
 
 export default function Home() {
@@ -202,8 +213,8 @@ export default function Home() {
           <div className="grid-2" style={{ alignItems: 'center', gap: 64 }}>
             <SlideLeft>
             <div>
-              <span className="section-label">What We Do</span>
-              <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', marginBottom: 20 }}>Practical Digital Solutions That Transform Operations</h2>
+              <span className="section-label" style={{ marginBottom: 16, display: 'inline-block' }}>Our Value Proposition</span>
+              <h2 style={{ fontSize: 'clamp(26px, 3.2vw, 38px)', marginBottom: 20 }}>Practical Digital Solutions That Transform Operations</h2>
               <p style={{ color: '#4B5563', fontSize: 17, lineHeight: 1.8, marginBottom: 20 }}>
                 We specialise in Intelligent Process Automation, AI-integrated solutions, custom web applications, and ERP implementations — creating practical digital solutions that transform how medium and large organisations operate.
               </p>
@@ -219,9 +230,9 @@ export default function Home() {
             <SlideRight>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
+                { title: 'What We Do', desc: 'We specialise in Intelligent Process Automation, AI-integrated solutions, custom web applications, and ERP implementations — creating practical digital solutions that transform how medium and large organisations operate.' },
                 { title: 'Who We Serve', desc: 'Medium and large-scale enterprises in Sri Lanka and across global markets seeking scalable, results-driven digital transformation.' },
-                { title: 'Our Approach', desc: 'Combining deep industry insight with international standards, we create practical, tailored solutions that deliver measurable business value.' },
-                { title: 'Our Commitment', desc: 'End-to-end partnership from consultation through implementation and ongoing support — local insight with global-standard delivery.' },
+                { title: 'Why Choose Overdime', desc: 'Domain experts who understand real business challenges — many of our team members bring hands-on experience in building, managing, and scaling businesses, combining deep industry insight with international standards to deliver measurable business value.' },
               ].map(item => (
                 <div key={item.title} style={{ display: 'flex', gap: 16, padding: 24, background: '#fff', borderRadius: 12, boxShadow: '0 2px 12px rgba(10,37,64,0.06)' }}>
                   <CheckCircle size={22} color="#00B0ED" style={{ flexShrink: 0, marginTop: 2 }} />
@@ -348,10 +359,23 @@ export default function Home() {
         <div className="container">
           <FadeUp>
           <p style={{ textAlign: 'center', color: '#8A8A8A', fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 36 }}>Technology Partners</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(9, 1fr)', gap: 10 }}>
             {partners.map(p => (
-              <div key={p} style={{ padding: '12px 24px', background: '#fff', borderRadius: 8, fontWeight: 600, color: '#4B5563', fontSize: 14, border: '1px solid #d1d1d1' }}>
-                {p}
+              <div key={p.name} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                padding: '12px 10px', background: '#fff', borderRadius: 12,
+                border: '1px solid #E5E7EB', height: 76,
+                boxShadow: '0 1px 6px rgba(0,0,0,0.04)',
+                transition: 'box-shadow 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.10)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 1px 6px rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                <img
+                  src={p.logo}
+                  alt={p.name}
+                  style={{ maxHeight: 48, maxWidth: '100%', width: '100%', objectFit: 'contain' }}
+                />
               </div>
             ))}
           </div>
