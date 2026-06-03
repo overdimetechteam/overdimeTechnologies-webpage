@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { ArrowRight, TrendingUp } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
+import AnimatedPageHero from '../components/AnimatedPageHero'
 
 const filters = ['All', 'Intelligent Automation', 'AI Solutions', 'Custom Applications', 'ERP']
 
@@ -52,13 +53,11 @@ export default function CaseStudies() {
   return (
     <PageTransition>
       <div>
-        <div className="page-hero">
-          <div className="container">
-            <span className="section-label">Case Studies</span>
-            <h1>Solving Complex Operational Challenges</h1>
-            <p>Real results delivered for forward-thinking organisations across Sri Lanka and beyond.</p>
-          </div>
-        </div>
+        <AnimatedPageHero>
+          <span className="section-label">Case Studies</span>
+          <h1>Solving Complex Operational Challenges</h1>
+          <p>Real results delivered for forward-thinking organisations across Sri Lanka and beyond.</p>
+        </AnimatedPageHero>
 
         <section className="section" style={{ background: '#F0F2F5' }}>
           <div className="container">

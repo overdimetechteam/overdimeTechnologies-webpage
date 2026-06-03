@@ -59,15 +59,7 @@ export default function Navbar() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 100 }}>
         {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img
-            src="/logo.png"
-            alt="Overdime Technologies"
-            style={{
-              height: 72,
-              width: 'auto',
-              filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.95)) drop-shadow(0 0 18px rgba(255,255,255,0.6)) drop-shadow(0 0 32px rgba(255,255,255,0.25))',
-            }}
-          />
+          <img src="/logo.png" alt="Overdime Technologies" style={{ height: 72, width: 'auto' }} />
         </Link>
 
         {/* Desktop nav */}

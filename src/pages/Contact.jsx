@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Mail, Phone, MapPin, Clock, MessageCircle, Calendar, ArrowRight } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
+import AnimatedPageHero from '../components/AnimatedPageHero'
 
 const services = ['Intelligent Process Automation', 'AI Integrated Solutions', 'Custom Web Applications', 'ERP Solutions', 'Digital Transformation Consultancy', 'Resource Augmentation', 'General Inquiry']
 
@@ -52,16 +53,14 @@ export default function Contact() {
     <PageTransition>
       <div>
         {/* Hero */}
-        <div className="page-hero">
-          <div className="container">
-            <span className="section-label">Contact</span>
-            <h1>Let's Start a Conversation</h1>
-            <p>Whether you're exploring automation opportunities, need a custom solution, or simply want to understand how we can help your organisation — we'd love to hear from you.</p>
-            <a href="#form" className="btn-primary" style={{ fontSize: 16 }}>
-              Schedule a Free Consultation <ArrowRight size={16} />
-            </a>
-          </div>
-        </div>
+        <AnimatedPageHero>
+          <span className="section-label">Contact</span>
+          <h1>Let's Start a Conversation</h1>
+          <p>Whether you're exploring automation opportunities, need a custom solution, or simply want to understand how we can help your organisation — we'd love to hear from you.</p>
+          <a href="#form" className="btn-primary" style={{ fontSize: 16 }}>
+            Schedule a Free Consultation <ArrowRight size={16} />
+          </a>
+        </AnimatedPageHero>
 
         <section className="section" style={{ background: '#F0F2F5' }} id="form">
           <div className="container">

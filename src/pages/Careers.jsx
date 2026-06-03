@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { ArrowRight, Target, TrendingUp, Monitor, DollarSign, Globe, ExternalLink } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
+import AnimatedPageHero from '../components/AnimatedPageHero'
 
 const STORAGE_KEY = 'overdime_jobs'
 const defaultPositions = [
@@ -44,16 +45,14 @@ export default function Careers() {
     <PageTransition>
       <div>
         {/* Hero */}
-        <div className="page-hero">
-          <div className="container">
-            <span className="section-label">Careers</span>
-            <h1>Join Our Journey of Intelligent Innovation</h1>
-            <p>We're building a team of passionate problem-solvers who want to make a real impact through automation, AI, and digital transformation.</p>
-            <a href="#positions" className="btn-primary" style={{ fontSize: 16 }}>
-              Explore Open Positions <ArrowRight size={16} />
-            </a>
-          </div>
-        </div>
+        <AnimatedPageHero>
+          <span className="section-label">Careers</span>
+          <h1>Join Our Journey of Intelligent Innovation</h1>
+          <p>We're building a team of passionate problem-solvers who want to make a real impact through automation, AI, and digital transformation.</p>
+          <a href="#positions" className="btn-primary" style={{ fontSize: 16 }}>
+            Explore Open Positions <ArrowRight size={16} />
+          </a>
+        </AnimatedPageHero>
 
         {/* Culture */}
         <section className="section" style={{ background: '#fff' }}>

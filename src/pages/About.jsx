@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Heart, Lightbulb, Shield, Award } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
+import AnimatedPageHero from '../components/AnimatedPageHero'
 
 const values = [
   { icon: <Heart size={28} color="#00B0ED" />, title: 'Client-First', desc: 'We listen deeply and design solutions tailored to your unique challenges and goals.' },
@@ -23,16 +24,14 @@ export default function About() {
     <PageTransition>
       <div>
         {/* Hero */}
-        <div className="page-hero">
-          <div className="container">
-            <span className="section-label">About Us</span>
-            <h1>About Overdime Technologies</h1>
-            <p>A boutique automation agency dedicated to helping scaling companies achieve operational excellence through intelligent automation and practical digital solutions.</p>
-            <Link to="/contact#team" className="btn-primary" style={{ fontSize: 16 }}>
-              Meet Our Team <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
+        <AnimatedPageHero>
+          <span className="section-label">About Us</span>
+          <h1>About Overdime Technologies</h1>
+          <p>A boutique automation agency dedicated to helping scaling companies achieve operational excellence through intelligent automation and practical digital solutions.</p>
+          <Link to="/contact#team" className="btn-primary" style={{ fontSize: 16 }}>
+            Meet Our Team <ArrowRight size={16} />
+          </Link>
+        </AnimatedPageHero>
 
         {/* Our Story */}
         <section className="section" style={{ background: '#F0F2F5' }}>

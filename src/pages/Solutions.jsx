@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { ArrowRight, Zap, Bot, Globe, Database, TrendingUp, Users, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
+import AnimatedPageHero from '../components/AnimatedPageHero'
 
 const solutions = [
   {
@@ -212,16 +213,14 @@ export default function Solutions() {
   return (
     <PageTransition>
       <div>
-        <div className="page-hero">
-          <div className="container">
-            <span className="section-label">Our Solutions</span>
-            <h1>Intelligent Solutions That Drive Real Business Performance</h1>
-            <p>We help growth-focused organisations streamline operations, reduce manual work, and unlock smarter decision-making through automation, AI, and tailored digital systems.</p>
-            <Link to="/contact" className="btn-primary" style={{ fontSize: 16 }}>
-              Schedule a Free Consultation <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
+        <AnimatedPageHero>
+          <span className="section-label">Our Solutions</span>
+          <h1>Intelligent Solutions That Drive Real Business Performance</h1>
+          <p>We help growth-focused organisations streamline operations, reduce manual work, and unlock smarter decision-making through automation, AI, and tailored digital systems.</p>
+          <Link to="/contact" className="btn-primary" style={{ fontSize: 16 }}>
+            Schedule a Free Consultation <ArrowRight size={16} />
+          </Link>
+        </AnimatedPageHero>
 
         <section className="section" style={{ background: '#F0F2F5' }}>
           <div className="container">
