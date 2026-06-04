@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { asset } from '../utils/asset'
 
 export default function Footer() {
   return (
@@ -23,7 +24,7 @@ export default function Footer() {
               marginBottom: 18,
             }}>
               <img
-                src="/logo.png"
+                src={asset('logo.png')}
                 alt="Overdime Technologies"
                 style={{ height: 36, width: 'auto' }}
               />

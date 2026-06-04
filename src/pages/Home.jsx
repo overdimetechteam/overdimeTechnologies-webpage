@@ -4,6 +4,7 @@ import { ArrowRight, Zap, Bot, Globe, Database, Users, TrendingUp, ChevronRight,
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight, AnimatedCounter } from '../components/Animate'
 import { DotGrid, Diagonal, Grain, CrossGrid, Scanlines, NoiseVignette } from '../components/Textures'
+import { asset } from '../utils/asset'
 
 const heroSlides = [
   { url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80' },
@@ -31,23 +32,23 @@ const stats = [
 
 /* outcome: concise claim backed by published case study data */
 const clients = [
-  { name: 'Dialog',             logo: '/logos/dialog.jpg',       outcome: '30%+ efficiency' },
-  { name: 'David Pieris',       logo: '/logos/david_peiris.png', outcome: '50% faster processes' },
-  { name: 'Colombo Fort Group', logo: '/logos/cfgs.jpg',         outcome: '45% less manual work' },
-  { name: 'Assetline',          logo: '/logos/assetline.png',    outcome: 'Automation partner' },
+  { name: 'Dialog',             logo: asset('logos/dialog.jpg'),       outcome: '30%+ efficiency' },
+  { name: 'David Pieris',       logo: asset('logos/david_peiris.png'), outcome: '50% faster processes' },
+  { name: 'Colombo Fort Group', logo: asset('logos/cfgs.jpg'),         outcome: '45% less manual work' },
+  { name: 'Assetline',          logo: asset('logos/assetline.png'),    outcome: 'Automation partner' },
 ]
 
 /* featured: true = blue top-border + "Partner" chip */
 const partners = [
-  { name: 'WorkHub24',           logo: '/logos/WorkHub24.png',             featured: false },
-  { name: 'UiPath',              logo: '/logos/uipath.jpg',                featured: true  },
-  { name: 'Microsoft',           logo: '/logos/Microsoft.jpg',             featured: true  },
-  { name: 'OpenAI',              logo: '/logos/openAi.png',                featured: true  },
-  { name: 'Google Gemini',       logo: '/logos/GoogleGemini.png',          featured: true  },
-  { name: 'Automation Anywhere', logo: '/logos/Automation%20Anywhere.png', featured: true  },
-  { name: 'Workato',             logo: '/logos/workato.jpg',               featured: false },
-  { name: 'Odoo',                logo: '/logos/odoo.jpg',                  featured: false },
-  { name: 'Zoho',                logo: '/logos/Zoho.png',                  featured: false },
+  { name: 'WorkHub24',           logo: asset('logos/WorkHub24.png'),             featured: false },
+  { name: 'UiPath',              logo: asset('logos/uipath.jpg'),                featured: true  },
+  { name: 'Microsoft',           logo: asset('logos/Microsoft.jpg'),             featured: true  },
+  { name: 'OpenAI',              logo: asset('logos/openAi.png'),                featured: true  },
+  { name: 'Google Gemini',       logo: asset('logos/GoogleGemini.png'),          featured: true  },
+  { name: 'Automation Anywhere', logo: asset('logos/Automation Anywhere.png'),   featured: true  },
+  { name: 'Workato',             logo: asset('logos/workato.jpg'),               featured: false },
+  { name: 'Odoo',                logo: asset('logos/odoo.jpg'),                  featured: false },
+  { name: 'Zoho',                logo: asset('logos/Zoho.png'),                  featured: false },
 ]
 
 const testimonials = [

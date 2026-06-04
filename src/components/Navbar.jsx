@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { asset } from '../utils/asset'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -79,7 +80,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0, padding: '0 6px' }}>
           <img
-            src="/logo.png"
+            src={asset('logo.png')}
             alt="Overdime Technologies"
             style={{ height: 48, width: 'auto' }}
           />
