@@ -142,7 +142,7 @@ export default function Home() {
                 <span style={{ color: '#00B0ED', fontSize: 16, fontWeight: 600, letterSpacing: '0.06em' }}>BOUTIQUE AUTOMATION AGENCY</span>
               </div>
 
-              <h1 style={{ color: '#fff', fontSize: 'clamp(28px, 3.8vw, 52px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.1, marginBottom: 20 }}>
+              <h1 style={{ color: '#fff', fontSize: 'clamp(34px, 3.8vw, 52px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.1, marginBottom: 20 }}>
                 Intelligent Automation<br />
                 <span style={{ color: '#00B0ED' }}>for Enterprise Growth</span>
               </h1>
@@ -255,7 +255,7 @@ export default function Home() {
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <span className="section-label">Our Core Solutions</span>
-              <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', marginTop: 8 }}>Everything You Need to Transform Your Operations</h2>
+              <h2 style={{ fontSize: 'clamp(22px, 2.5vw, 36px)', marginTop: 8 }}>Everything You Need to Transform Your Operations</h2>
             </div>
           </FadeUp>
           <div className="grid-3">
@@ -287,8 +287,8 @@ export default function Home() {
         <div className="container" style={{ textAlign: 'center' }}>
           <FadeUp>
             <span className="section-label">Proven Results</span>
-            <h2 style={{ color: '#fff', fontSize: 'clamp(18px, 2.5vw, 24px)', marginBottom: 16 }}>Delivering Real Impact for Forward-Thinking Organisations</h2>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 18, maxWidth: 560, margin: '0 auto 56px' }}>
+            <h2 style={{ color: '#fff', fontSize: 'clamp(22px, 2.5vw, 36px)', marginBottom: 16 }}>Delivering Real Impact for Forward-Thinking Organisations</h2>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(15px, 1.5vw, 18px)', maxWidth: 560, margin: '0 auto 56px' }}>
               Our intelligent solutions consistently deliver measurable improvements across key business metrics.
             </p>
           </FadeUp>
@@ -300,8 +300,8 @@ export default function Home() {
               { value: 'Greater', label: 'Process transparency and control' },
             ].map((item, i) => (
               <FadeUp key={item.value} delay={i * 0.1}>
-                <div style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 16, padding: '32px 24px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div style={{ fontSize: 32, fontWeight: 800, color: '#F4C95D', fontFamily: 'Plus Jakarta Sans', marginBottom: 8 }}>{item.value}</div>
+                <div className="results-card">
+                  <div className="results-card-value" style={{ color: i % 2 === 0 ? '#00B0ED' : '#F4C95D' }}>{item.value}</div>
                   <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, lineHeight: 1.6 }}>{item.label}</div>
                 </div>
               </FadeUp>
@@ -316,7 +316,7 @@ export default function Home() {
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <span className="section-label">What Our Clients Say</span>
-              <h2 style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', marginTop: 8 }}>Trusted by Industry Leaders</h2>
+              <h2 style={{ fontSize: 'clamp(22px, 2.5vw, 36px)', marginTop: 8 }}>Trusted by Industry Leaders</h2>
             </div>
           </FadeUp>
           <div className="grid-2">
@@ -360,7 +360,7 @@ export default function Home() {
         <div className="container">
           <FadeUp>
           <p style={{ textAlign: 'center', color: '#8A8A8A', fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 36 }}>Technology Partners</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(9, 1fr)', gap: 10 }}>
+          <div className="partners-grid">
             {partners.map(p => (
               <div key={p.name} style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
