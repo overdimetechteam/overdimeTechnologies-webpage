@@ -11,9 +11,9 @@ import AnimatedPageHero from '../components/AnimatedPageHero'
 // 2. Add an Email Service (Gmail / Outlook / etc.)
 // 3. Create an Email Template — use the variable names below
 // 4. Paste your IDs here
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'   // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'  // e.g. 'template_xyz789'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'   // e.g. 'aBcDeFgHiJ...'
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || 'YOUR_PUBLIC_KEY'
 // ──────────────────────────────────────────────────────────────────
 
 const services = ['Intelligent Process Automation', 'AI Integrated Solutions', 'Custom Web Applications', 'ERP Solutions', 'Digital Transformation Consultancy', 'Resource Augmentation', 'General Inquiry']

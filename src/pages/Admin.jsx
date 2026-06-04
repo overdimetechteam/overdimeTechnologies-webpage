@@ -137,7 +137,7 @@ export default function Admin() {
       <div style={{ background: '#0A2540', padding: '0 24px' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <img src={asset('logo.jpg')} alt="Overdime" style={{ height: 48 }} />
+            <img src={asset('logo.png')} alt="Overdime" style={{ height: 48 }} />
             <div>
               <div style={{ color: '#fff', fontWeight: 700, fontSize: 15, fontFamily: 'Plus Jakarta Sans' }}>Admin Panel</div>
               <div style={{ color: '#00B0ED', fontSize: 12 }}>Job Vacancy Management</div>

@@ -9,7 +9,7 @@ export default function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 48, paddingBottom: 48 }}>
           {/* Brand */}
           <div>
-            <img src={asset('logo.jpg')} alt="Overdime Technologies" style={{ height: 44, marginBottom: 16 }} />
+            <img src={asset('logo.png')} alt="Overdime Technologies" style={{ height: 44, marginBottom: 16 }} />
             <p style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', maxWidth: 240 }}>
               Intelligent automation for enterprise growth. Serving medium and large enterprises across Sri Lanka and globally.
             </p>
