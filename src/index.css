@@ -1,5 +1,5 @@
 :root {
-  --blue: #00b2edd4;
+  --blue: #00B0ED;
   --blue-dark: #0078aa;    /* accessible blue for text on white (4.6:1 contrast) */
   --navy: #062230;
   --gold: #F4C95D;
@@ -27,9 +27,12 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   background-color: var(--bg);
   color: var(--text);
@@ -467,4 +470,40 @@ textarea:focus {
   .hero-grid { gap: 28px; }
   .hero-stats-grid { grid-template-columns: 1fr 1fr; }
   .perks-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Technology Partners grid */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .partners-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .partners-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+
+/* Proven Results stat cards */
+.results-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 32px 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.results-card-value {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: 'Plus Jakarta Sans';
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .results-card { padding: 20px 16px; }
+  .results-card-value { font-size: 22px; }
 }

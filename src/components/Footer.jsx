@@ -32,7 +32,7 @@ export default function Footer() {
               Intelligent automation for enterprise growth. Serving medium and large enterprises across Sri Lanka and globally.
             </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
-              <SocialIcon href="#" label="LinkedIn"><Linkedin size={16} /></SocialIcon>
+              <SocialIcon href="https://www.linkedin.com/company/overdime-technologies/" label="LinkedIn"><Linkedin size={16} /></SocialIcon>
               <SocialIcon href="#" label="Twitter"><Twitter size={16} /></SocialIcon>
               <SocialIcon href="#" label="Facebook"><Facebook size={16} /></SocialIcon>
             </div>
