@@ -2,7 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href="/logo.jpg" />
+    <script>
+      // Restore route after 404.html redirect on GitHub Pages
+      (function () {
+        var redirect = sessionStorage.getItem('spa_redirect')
+        if (redirect) {
+          sessionStorage.removeItem('spa_redirect')
+          window.history.replaceState(null, '', redirect)
+        }
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Overdime Technologies | Intelligent Automation for Enterprise Growth</title>
     <meta name="description" content="Boutique automation agency helping medium and large enterprises streamline operations, implement AI-powered solutions, and build custom systems." />

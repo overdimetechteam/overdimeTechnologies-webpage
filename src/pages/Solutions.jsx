@@ -4,23 +4,22 @@ import { ArrowRight, Zap, Bot, Globe, Database, TrendingUp, Users, CheckCircle, 
 import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
 import AnimatedPageHero from '../components/AnimatedPageHero'
+import { asset } from '../utils/asset'
 
-// Logo map — keys must match tech[] strings exactly
 const techLogos = {
-  'WorkHub24':              '/logos/WorkHub24.png',
-  'UiPath':                 '/logos/uipath.jpg',
-  'Automation Anywhere':    '/logos/Automation%20Anywhere.png',
-  'Microsoft Power Automate': '/logos/Microsoft.jpg',
-  'Microsoft PowerApps':    '/logos/Microsoft.jpg',
-  'Workato':                '/logos/workato.jpg',
-  'Google Gemini':          '/logos/GoogleGemini.png',
-  'OpenAI':                 '/logos/openAi.png',
-  'Odoo':                   '/logos/odoo.jpg',
-  'Zoho':                   '/logos/Zoho.png',
-  // Not yet uploaded — will be replaced once files are added to /logos/
-  'N8N':                    '/logos/n8n.png',
-  'Jotform AI':             '/logos/jotform.png',
-  'Anthropic Claude':       '/logos/anthropic.png',
+  'WorkHub24':                asset('logos/WorkHub24.png'),
+  'UiPath':                   asset('logos/uipath.jpg'),
+  'Automation Anywhere':      asset('logos/Automation Anywhere.png'),
+  'Microsoft Power Automate': asset('logos/Microsoft.jpg'),
+  'Microsoft PowerApps':      asset('logos/Microsoft.jpg'),
+  'Workato':                  asset('logos/workato.jpg'),
+  'Google Gemini':            asset('logos/GoogleGemini.png'),
+  'OpenAI':                   asset('logos/openAi.png'),
+  'Odoo':                     asset('logos/odoo.jpg'),
+  'Zoho':                     asset('logos/Zoho.png'),
+  'N8N':                      asset('logos/n8n.png'),
+  'Jotform AI':               asset('logos/jotform.png'),
+  'Anthropic Claude':         asset('logos/anthropic.png'),
 }
 
 function TechBadge({ name }) {

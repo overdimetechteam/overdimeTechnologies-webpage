@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { ArrowRight, Zap, Bot, Globe, Database, Users, TrendingUp, CheckCircle, Quote, ChevronRight } from 'lucide-react'
+import { asset } from '../utils/asset'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight } from '../components/Animate'
 
@@ -52,22 +53,22 @@ const stats = [
 ]
 
 const partners = [
-  { name: 'WorkHub24',           logo: '/logos/WorkHub24.png'                  },
-  { name: 'UiPath',              logo: '/logos/uipath.jpg'                     },
-  { name: 'Microsoft',           logo: '/logos/Microsoft.jpg'                  },
-  { name: 'OpenAI',              logo: '/logos/openAi.png'                     },
-  { name: 'Google Gemini',       logo: '/logos/GoogleGemini.png'               },
-  { name: 'Automation Anywhere', logo: '/logos/Automation%20Anywhere.png'      },
-  { name: 'Workato',             logo: '/logos/workato.jpg'                    },
-  { name: 'Odoo',                logo: '/logos/odoo.jpg'                       },
-  { name: 'Zoho',                logo: '/logos/Zoho.png'                       },
+  { name: 'WorkHub24',           logo: asset('logos/WorkHub24.png')               },
+  { name: 'UiPath',              logo: asset('logos/uipath.jpg')                  },
+  { name: 'Microsoft',           logo: asset('logos/Microsoft.jpg')               },
+  { name: 'OpenAI',              logo: asset('logos/openAi.png')                  },
+  { name: 'Google Gemini',       logo: asset('logos/GoogleGemini.png')            },
+  { name: 'Automation Anywhere', logo: asset('logos/Automation Anywhere.png')     },
+  { name: 'Workato',             logo: asset('logos/workato.jpg')                 },
+  { name: 'Odoo',                logo: asset('logos/odoo.jpg')                    },
+  { name: 'Zoho',                logo: asset('logos/Zoho.png')                    },
 ]
 
 const clients = [
-  { name: 'Dialog',             logo: '/logos/dialog.jpg'        },
-  { name: 'David Pieris',       logo: '/logos/david_peiris.png'  },
-  { name: 'Colombo Fort Group', logo: '/logos/cfgs.jpg'          },
-  { name: 'Assetline',          logo: '/logos/assetline.png'     },
+  { name: 'Dialog',             logo: asset('logos/dialog.jpg')       },
+  { name: 'David Pieris',       logo: asset('logos/david_peiris.png') },
+  { name: 'Colombo Fort Group', logo: asset('logos/cfgs.jpg')         },
+  { name: 'Assetline',          logo: asset('logos/assetline.png')    },
 ]
 
 export default function Home() {
