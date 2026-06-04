@@ -11,18 +11,17 @@ const links = [
 ]
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [visible, setVisible] = useState(true)
-  const lastY = useRef(0)
-  const location = useLocation()
+  const [open, setOpen]       = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible]  = useState(true)
+  const lastY                  = useRef(0)
+  const location               = useLocation()
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
-      // Smoothly ramp from 0→1 over the first 160px of scroll
-      setProgress(Math.min(y / 160, 1))
-      if (y < 80) {
+      setScrolled(y > 40)
+      if (y < 60) {
         setVisible(true)
       } else if (y > lastY.current + 8) {
         setVisible(false)
@@ -38,32 +37,56 @@ export default function Navbar() {
 
   useEffect(() => {
     setOpen(false)
-    setProgress(0)
+    setScrolled(false)
     window.scrollTo(0, 0)
   }, [location.pathname])
 
-  const scrolled = progress > 0.5
+  /* ─── always-light pill — slightly more transparent before scroll ── */
+  const bg     = scrolled ? 'rgba(255,255,255,0.76)' : 'rgba(255,255,255,0.58)'
+  const border = '1px solid rgba(0,0,0,0.07)'
+  const shadow = scrolled
+    ? '0 6px 36px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,1)'
+    : '0 4px 24px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9)'
 
   return (
     <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled
-        ? 'rgba(10, 37, 64, 0.82)'
-        : 'linear-gradient(to bottom, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 100%)',
-      backdropFilter: 'blur(14px)',
-      WebkitBackdropFilter: 'blur(14px)',
-      boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.25)' : 'none',
-      transform: visible ? 'translateY(0)' : 'translateY(-100%)',
-      transition: 'background 0.4s ease, box-shadow 0.3s ease, transform 0.35s ease',
+      position: 'fixed',
+      /* Centre the pill horizontally */
+      top: 14,
+      left: '50%',
+      /* Combine centering + show/hide into one transform */
+      transform: visible
+        ? 'translateX(-50%) translateY(0)'
+        : 'translateX(-50%) translateY(-160%)',
+      /* Pill width — full-minus-gutter up to max */
+      width: 'min(1140px, calc(100% - 28px))',
+      zIndex: 1000,
+      borderRadius: 100,
+      background: bg,
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      border,
+      boxShadow: shadow,
+      transition: 'background 0.35s ease, border 0.35s ease, box-shadow 0.35s ease, transform 0.38s cubic-bezier(0.34,1.28,0.64,1)',
     }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 100 }}>
+
+      {/* ── Inner row ── */}
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        height: 72, padding: '0 14px 0 10px',
+      }}>
+
         {/* Logo */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Overdime Technologies" style={{ height: 72, width: 'auto' }} />
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0, padding: '0 6px' }}>
+          <img
+            src="/logo.png"
+            alt="Overdime Technologies"
+            style={{ height: 48, width: 'auto' }}
+          />
         </Link>
 
-        {/* Desktop nav */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 4 }} className="desktop-nav">
+        {/* Desktop links */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="pill-nav-links">
           {links.map(l => {
             const isActive = location.pathname === l.to
             return (
@@ -71,56 +94,115 @@ export default function Navbar() {
                 key={l.to}
                 to={l.to}
                 style={{
-                  padding: '8px 14px',
-                  borderRadius: 8,
+                  padding: '6px 14px',
+                  borderRadius: 100,
                   fontWeight: 500,
-                  fontSize: 15,
-                  color: isActive ? '#fff' : 'rgba(255,255,255,0.82)',
-                  background: isActive ? 'rgba(255,255,255,0.15)' : 'transparent',
-                  transition: 'color 0.2s ease, background 0.2s ease',
+                  fontSize: 14,
+                  whiteSpace: 'nowrap',
+                  transition: 'background 0.22s ease, color 0.22s ease',
+                  /* Always dark text on white pill */
+                  background: isActive ? 'rgba(244,201,93,0.15)' : 'transparent',
+                  color:      isActive ? '#B8860B'              : '#374151',
+                }}
+                onMouseEnter={e => {
+                  if (!isActive) e.currentTarget.style.background = 'rgba(0,0,0,0.04)'
+                }}
+                onMouseLeave={e => {
+                  if (!isActive) e.currentTarget.style.background = 'transparent'
                 }}
               >
                 {l.label}
               </Link>
             )
           })}
-          <Link
-            to="/contact"
-            className="btn-outline-white"
-            style={{ marginLeft: 12, padding: '10px 22px', fontSize: 14 }}
-          >
-            Contact Us
-          </Link>
         </div>
+
+        {/* CTA — gold pill button, always consistent on white pill */}
+        <Link
+          to="/contact"
+          className="pill-nav-links"
+          style={{
+            display: 'inline-flex', alignItems: 'center',
+            padding: '8px 22px', borderRadius: 100,
+            fontWeight: 700, fontSize: 13,
+            whiteSpace: 'nowrap',
+            background: '#00B0ED',
+            color: '#fff',
+            boxShadow: '0 2px 12px rgba(0,176,237,0.35)',
+            transition: 'all 0.22s ease',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.opacity = '0.92' }}
+          onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.opacity = '1' }}
+        >
+          Contact Us
+        </Link>
 
         {/* Mobile hamburger */}
         <button
-          onClick={() => setOpen(!open)}
-          style={{ background: 'none', padding: 8, display: 'none' }}
-          className="hamburger"
+          onClick={() => setOpen(o => !o)}
           aria-label="Toggle menu"
+          style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            padding: '8px 10px', borderRadius: 100, display: 'none',
+            transition: 'background 0.2s',
+          }}
+          className="pill-hamburger"
+          onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+          onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
         >
-          {open ? <X size={24} color="#fff" /> : <Menu size={24} color="#fff" />}
+          {open
+            ? <X    size={20} color="#062230" />
+            : <Menu size={20} color="#062230" />
+          }
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* ── Mobile dropdown — floats as a rounded card below the pill ── */}
       {open && (
-        <div style={{ background: '#fff', borderTop: '1px solid #E5E7EB', padding: '16px 24px 24px' }}>
+        <div style={{
+          position: 'absolute',
+          top: 'calc(100% + 8px)',
+          left: 0, right: 0,
+          background: 'rgba(255,255,255,0.97)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: 22,
+          border: '1px solid rgba(0,0,0,0.07)',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.14)',
+          padding: '10px 12px 14px',
+          overflow: 'hidden',
+        }}>
           {links.map(l => (
             <Link
               key={l.to}
               to={l.to}
               style={{
-                display: 'block', padding: '12px 0', fontWeight: 500, fontSize: 16,
-                color: location.pathname === l.to ? '#00B0ED' : '#1F2937',
-                borderBottom: '1px solid #F3F4F6',
+                display: 'block',
+                padding: '11px 14px',
+                fontWeight: 500,
+                fontSize: 15,
+                color: location.pathname === l.to ? '#B8860B' : '#1F2937',
+                borderRadius: 12,
+                background: location.pathname === l.to ? 'rgba(244,201,93,0.12)' : 'transparent',
+                marginBottom: 2,
+                transition: 'background 0.18s',
               }}
             >
               {l.label}
             </Link>
           ))}
-          <Link to="/contact" className="btn-primary" style={{ marginTop: 16, justifyContent: 'center', width: '100%' }}>
+          <div style={{ height: 1, background: '#F3F4F6', margin: '8px 4px' }} />
+          <Link
+            to="/contact"
+            style={{
+              display: 'flex', justifyContent: 'center',
+              padding: '11px 20px', borderRadius: 100,
+              fontWeight: 700, fontSize: 14,
+              background: '#00B0ED', color: '#fff',
+              marginTop: 4,
+              boxShadow: '0 2px 12px rgba(0,176,237,0.25)',
+            }}
+          >
             Contact Us
           </Link>
         </div>
@@ -128,8 +210,8 @@ export default function Navbar() {
 
       <style>{`
         @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .hamburger { display: block !important; }
+          .pill-nav-links { display: none !important; }
+          .pill-hamburger { display: block !important; }
         }
       `}</style>
     </nav>

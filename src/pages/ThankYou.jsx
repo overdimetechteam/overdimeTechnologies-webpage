@@ -32,7 +32,7 @@ export default function ThankYou() {
                     { step: '03', text: "If you requested a consultation, we'll propose suitable time slots." },
                   ].map(item => (
                     <div key={item.step} style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, #00B0ED, #0A2540)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 13, fontFamily: 'Plus Jakarta Sans', flexShrink: 0 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, #00B0ED, #062230)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 13, fontFamily: 'Plus Jakarta Sans', flexShrink: 0 }}>
                         {item.step}
                       </div>
                       <p style={{ color: '#4B5563', fontSize: 15, lineHeight: 1.6, paddingTop: 6 }}>{item.text}</p>
@@ -43,7 +43,7 @@ export default function ThankYou() {
             </FadeUp>
 
             <FadeUp delay={0.25}>
-              <div style={{ background: '#0A2540', borderRadius: 20, padding: 40, marginBottom: 40, textAlign: 'left' }}>
+              <div style={{ background: '#062230', borderRadius: 20, padding: 40, marginBottom: 40, textAlign: 'left' }}>
                 <h3 style={{ color: '#fff', fontSize: 20, marginBottom: 24 }}>While You Wait, Feel Free to Explore</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <Link to="/solutions" style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'rgba(255,255,255,0.8)', fontSize: 15, padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
@@ -68,9 +68,9 @@ export default function ThankYou() {
               </p>
 
               <div style={{ background: '#fff', borderRadius: 16, padding: 28, marginBottom: 32, boxShadow: '0 2px 12px rgba(10,37,64,0.06)' }}>
-                <p style={{ color: '#0A2540', fontWeight: 600, fontSize: 15, marginBottom: 16 }}>Need to reach us sooner?</p>
+                <p style={{ color: '#062230', fontWeight: 600, fontSize: 15, marginBottom: 16 }}>Need to reach us sooner?</p>
                 <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="tel:+94777751445" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#FAF7F2', borderRadius: 10, color: '#0A2540', fontWeight: 600, fontSize: 14, border: '1px solid #E5E7EB' }}>
+                  <a href="tel:+94777751445" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#FAF7F2', borderRadius: 10, color: '#062230', fontWeight: 600, fontSize: 14, border: '1px solid #E5E7EB' }}>
                     <Phone size={16} color="#00B0ED" /> +94 777 751 445
                   </a>
                   <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#25D366', borderRadius: 10, color: '#fff', fontWeight: 600, fontSize: 14 }}>

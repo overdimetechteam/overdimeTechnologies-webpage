@@ -98,12 +98,12 @@ export default function Admin() {
   // ── PIN GATE ──
   if (!authed) {
     return (
-      <div style={{ minHeight: '100vh', background: '#0A2540', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+      <div style={{ minHeight: '100vh', background: '#062230', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
         <div style={{ background: '#fff', borderRadius: 20, padding: 48, width: '100%', maxWidth: 400, textAlign: 'center', boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}>
           <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(0,176,237,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px' }}>
             <Lock size={28} color="#00B0ED" />
           </div>
-          <h1 style={{ fontSize: 24, color: '#0A2540', marginBottom: 8 }}>Admin Panel</h1>
+          <h1 style={{ fontSize: 24, color: '#062230', marginBottom: 8 }}>Admin Panel</h1>
           <p style={{ color: '#8A8A8A', fontSize: 14, marginBottom: 32 }}>Overdime Technologies — Job Management</p>
 
           <input
@@ -133,7 +133,7 @@ export default function Admin() {
   return (
     <div style={{ minHeight: '100vh', background: '#F0F2F5' }}>
       {/* Admin header */}
-      <div style={{ background: '#0A2540', padding: '0 24px' }}>
+      <div style={{ background: '#062230', padding: '0 24px' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <img src="/logo.jpg" alt="Overdime" style={{ height: 48 }} />
@@ -152,7 +152,7 @@ export default function Admin() {
         {/* Top bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28, flexWrap: 'wrap', gap: 16 }}>
           <div>
-            <h2 style={{ fontSize: 26, color: '#0A2540', margin: 0 }}>Open Positions</h2>
+            <h2 style={{ fontSize: 26, color: '#062230', margin: 0 }}>Open Positions</h2>
             <p style={{ color: '#8A8A8A', fontSize: 14, marginTop: 4 }}>
               {jobs.filter(j => j.active).length} active · {jobs.filter(j => !j.active).length} hidden
             </p>
@@ -233,7 +233,7 @@ export default function Admin() {
                   <Briefcase size={18} color={job.active ? '#00B0ED' : '#8A8A8A'} />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#0A2540', fontSize: 15, fontFamily: 'Plus Jakarta Sans' }}>{job.title}</div>
+                  <div style={{ fontWeight: 700, color: '#062230', fontSize: 15, fontFamily: 'Plus Jakarta Sans' }}>{job.title}</div>
                   <div style={{ color: '#8A8A8A', fontSize: 13 }}>{job.subtitle}</div>
                   <div style={{ display: 'flex', gap: 8, marginTop: 6 }}>
                     <span style={{ background: 'rgba(0,176,237,0.1)', color: '#0072a3', padding: '2px 10px', borderRadius: 100, fontSize: 11, fontWeight: 600 }}>{job.type}</span>
@@ -264,7 +264,7 @@ export default function Admin() {
 
         <div style={{ marginTop: 32, padding: 20, background: '#fff', borderRadius: 12, border: '1px solid #E5E7EB' }}>
           <p style={{ color: '#8A8A8A', fontSize: 13, margin: 0 }}>
-            <strong style={{ color: '#0A2540' }}>How it works:</strong> Changes save automatically to the website. Active positions appear on the Careers page. Hidden positions are stored but not shown publicly.
+            <strong style={{ color: '#062230' }}>How it works:</strong> Changes save automatically to the website. Active positions appear on the Careers page. Hidden positions are stored but not shown publicly.
             <br />Access this panel at <strong>/admin</strong> · PIN: <strong>overdime2024</strong> (change in <code>src/pages/Admin.jsx</code>)
           </p>
         </div>
@@ -273,5 +273,5 @@ export default function Admin() {
   )
 }
 
-const labelStyle = { display: 'block', fontWeight: 600, color: '#0A2540', fontSize: 13, marginBottom: 6 }
+const labelStyle = { display: 'block', fontWeight: 600, color: '#062230', fontSize: 13, marginBottom: 6 }
 const inputStyle = { width: '100%', padding: '11px 14px', border: '1px solid #E5E7EB', borderRadius: 8, fontSize: 14, color: '#1F2937', outline: 'none', fontFamily: 'Inter', background: '#fff' }

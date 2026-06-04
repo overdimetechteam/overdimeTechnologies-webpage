@@ -5,22 +5,20 @@ import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
 import AnimatedPageHero from '../components/AnimatedPageHero'
 
-// Logo map — keys must match tech[] strings exactly
 const techLogos = {
-  'WorkHub24':              '/logos/WorkHub24.png',
-  'UiPath':                 '/logos/uipath.jpg',
-  'Automation Anywhere':    '/logos/Automation%20Anywhere.png',
+  'WorkHub24':                '/logos/WorkHub24.png',
+  'UiPath':                   '/logos/uipath.jpg',
+  'Automation Anywhere':      '/logos/Automation%20Anywhere.png',
   'Microsoft Power Automate': '/logos/Microsoft.jpg',
-  'Microsoft PowerApps':    '/logos/Microsoft.jpg',
-  'Workato':                '/logos/workato.jpg',
-  'Google Gemini':          '/logos/GoogleGemini.png',
-  'OpenAI':                 '/logos/openAi.png',
-  'Odoo':                   '/logos/odoo.jpg',
-  'Zoho':                   '/logos/Zoho.png',
-  // Not yet uploaded — will be replaced once files are added to /logos/
-  'N8N':                    '/logos/n8n.png',
-  'Jotform AI':             '/logos/jotform.png',
-  'Anthropic Claude':       '/logos/anthropic.png',
+  'Microsoft PowerApps':      '/logos/Microsoft.jpg',
+  'Workato':                  '/logos/workato.jpg',
+  'Google Gemini':            '/logos/GoogleGemini.png',
+  'OpenAI':                   '/logos/openAi.png',
+  'Odoo':                     '/logos/odoo.jpg',
+  'Zoho':                     '/logos/Zoho.png',
+  'N8N':                      '/logos/n8n.png',
+  'Jotform AI':               '/logos/jotform.png',
+  'Anthropic Claude':         '/logos/anthropic.png',
 }
 
 function TechBadge({ name }) {
@@ -32,23 +30,30 @@ function TechBadge({ name }) {
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: '#fff', border: '1px solid #E5E7EB', borderRadius: 10,
-        padding: '8px 14px', height: 52, minWidth: 80,
+        padding: '8px 14px', height: 50, minWidth: 80,
         boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
-      }}>
-        <img
-          src={logo}
-          alt={name}
-          style={{ maxHeight: 30, maxWidth: 90, objectFit: 'contain' }}
-          onError={() => setImgFailed(true)}
-        />
+        transition: 'all 0.2s ease',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.boxShadow = '0 4px 14px rgba(0,0,0,0.10)'
+        e.currentTarget.style.transform = 'translateY(-2px)'
+        e.currentTarget.style.borderColor = 'rgba(0,176,237,0.2)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.05)'
+        e.currentTarget.style.transform = 'translateY(0)'
+        e.currentTarget.style.borderColor = '#E5E7EB'
+      }}
+      >
+        <img src={logo} alt={name} style={{ maxHeight: 28, maxWidth: 88, objectFit: 'contain' }} onError={() => setImgFailed(true)} />
       </div>
     )
   }
   return (
     <span style={{
-      background: '#F0F2F5', color: '#0A2540', border: '1px solid #E5E7EB',
+      background: '#F0F2F5', color: '#062230', border: '1px solid #E5E7EB',
       padding: '8px 14px', borderRadius: 10, fontSize: 13, fontWeight: 600,
-      height: 52, display: 'inline-flex', alignItems: 'center',
+      height: 50, display: 'inline-flex', alignItems: 'center',
     }}>{name}</span>
   )
 }
@@ -56,7 +61,7 @@ function TechBadge({ name }) {
 const solutions = [
   {
     id: 'ipa',
-    icon: <Zap size={32} color="#00B0ED" />,
+    icon: <Zap size={30} color="#00B0ED" />,
     title: 'Intelligent Process Automation (IPA)',
     overview: 'We help organisations transform complex operations into efficient, intelligent processes. Our IPA practice combines workflow automation, robotic process automation, and AI-driven decision-making to reduce manual effort and deliver measurable efficiency gains.',
     pillars: [
@@ -69,7 +74,7 @@ const solutions = [
   },
   {
     id: 'ai',
-    icon: <Bot size={32} color="#00B0ED" />,
+    icon: <Bot size={30} color="#00B0ED" />,
     title: 'AI Integrated Solutions',
     overview: 'We design and implement AI-powered solutions that help organisations operate more intelligently, accurately, and efficiently while minimising manual intervention.',
     capabilities: [
@@ -83,7 +88,7 @@ const solutions = [
   },
   {
     id: 'web',
-    icon: <Globe size={32} color="#00B0ED" />,
+    icon: <Globe size={30} color="#00B0ED" />,
     title: 'Custom Web Applications',
     overview: 'When standard solutions fall short, we design and develop bespoke web applications that perfectly match your unique business processes and growth ambitions.',
     services: [
@@ -96,7 +101,7 @@ const solutions = [
   },
   {
     id: 'erp',
-    icon: <Database size={32} color="#00B0ED" />,
+    icon: <Database size={30} color="#00B0ED" />,
     title: 'ERP Solutions',
     overview: 'We help organisations centralise and streamline operations through modern ERP and business management platforms, delivering greater visibility, collaboration, and control.',
     services: [
@@ -110,7 +115,7 @@ const solutions = [
   },
   {
     id: 'consulting',
-    icon: <TrendingUp size={32} color="#00B0ED" />,
+    icon: <TrendingUp size={30} color="#00B0ED" />,
     title: 'Digital Transformation Consultancy',
     overview: 'We guide organisations through their digital transformation journey by aligning technology, processes, and people to improve efficiency, agility, and business performance. Our senior consultants bring over 25 years of experience in global companies.',
     services: [
@@ -124,7 +129,7 @@ const solutions = [
   },
   {
     id: 'staffing',
-    icon: <Users size={32} color="#00B0ED" />,
+    icon: <Users size={30} color="#00B0ED" />,
     title: 'Resource Augmentation Solutions',
     overview: 'We provide skilled technology professionals to support short-term and long-term client initiatives, enabling organisations to scale delivery capabilities efficiently.',
     categories: ['Software Developers', 'Automation Engineers', 'AI Engineers', 'Business Analysts', 'Project Managers', 'QA Engineers', 'UI/UX Designers', 'Solution Architects'],
@@ -135,38 +140,80 @@ const solutions = [
 
 function SolutionCard({ sol, expanded, onToggle }) {
   return (
-    <div style={{ background: '#fff', borderRadius: 20, overflow: 'hidden', boxShadow: '0 2px 20px rgba(10,37,64,0.07)', border: '1px solid #E5E7EB', marginBottom: 24 }}>
+    <div style={{
+      background: '#fff',
+      borderRadius: 20,
+      overflow: 'hidden',
+      boxShadow: '0 2px 16px rgba(10,37,64,0.07)',
+      border: '1px solid #E5E7EB',
+      borderLeft: expanded ? '4px solid #F4C95D' : '4px solid rgba(0,176,237,0.25)',
+      marginBottom: 20,
+      transition: 'border-left-color 0.25s ease, box-shadow 0.25s ease',
+    }}
+    onMouseEnter={e => {
+      if (!expanded) e.currentTarget.style.boxShadow = '0 6px 28px rgba(10,37,64,0.11)'
+    }}
+    onMouseLeave={e => {
+      e.currentTarget.style.boxShadow = '0 2px 16px rgba(10,37,64,0.07)'
+    }}
+    >
+      {/* Header / Toggle */}
       <button
         onClick={onToggle}
-        style={{ width: '100%', background: 'none', padding: '32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', textAlign: 'left', cursor: 'pointer' }}
+        style={{
+          width: '100%', background: 'none', padding: '28px 32px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          textAlign: 'left', cursor: 'pointer',
+        }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <div style={{ width: 60, height: 60, borderRadius: 14, background: 'rgba(0,176,237,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+          {/* Icon container */}
+          <div style={{
+            width: 58, height: 58, borderRadius: 14, flexShrink: 0,
+            background: expanded
+              ? 'linear-gradient(135deg, rgba(244,201,93,0.15) 0%, rgba(244,201,93,0.04) 100%)'
+              : 'linear-gradient(135deg, rgba(0,176,237,0.13) 0%, rgba(0,176,237,0.04) 100%)',
+            border: expanded ? '1px solid rgba(244,201,93,0.2)' : '1px solid rgba(0,176,237,0.14)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            transition: 'all 0.25s ease',
+          }}>
             {sol.icon}
           </div>
           <div style={{ textAlign: 'left' }}>
-            <h3 style={{ fontSize: 'clamp(17px, 2vw, 22px)', color: '#0A2540', margin: 0 }}>{sol.title}</h3>
-            <p style={{ color: '#4B5563', fontSize: 14, marginTop: 4, lineHeight: 1.5 }}>{sol.overview.slice(0, 100)}...</p>
+            <h3 style={{ fontSize: 'clamp(16px, 2vw, 21px)', color: '#062230', margin: 0, lineHeight: 1.25 }}>{sol.title}</h3>
+            <p style={{ color: '#4B5563', fontSize: 13, marginTop: 5, lineHeight: 1.5 }}>{sol.overview.slice(0, 100)}…</p>
           </div>
         </div>
-        <div style={{ flexShrink: 0, marginLeft: 16, width: 36, height: 36, borderRadius: '50%', background: expanded ? '#00B0ED' : '#F3F4F6', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}>
-          {expanded ? <ChevronUp size={18} color="#fff" /> : <ChevronDown size={18} color="#4B5563" />}
+        {/* Expand/collapse button */}
+        <div style={{
+          flexShrink: 0, marginLeft: 20,
+          width: 36, height: 36, borderRadius: '50%',
+          background: expanded ? '#F4C95D' : '#F3F4F6',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transition: 'all 0.25s ease',
+          boxShadow: expanded ? '0 4px 12px rgba(244,201,93,0.35)' : 'none',
+        }}>
+          {expanded
+            ? <ChevronUp size={17} color="#062230" />
+            : <ChevronDown size={17} color="#4B5563" />
+          }
         </div>
       </button>
 
+      {/* Expanded content */}
       {expanded && (
-        <div style={{ padding: '0 32px 32px', borderTop: '1px solid #F3F4F6' }}>
-          <p style={{ color: '#4B5563', lineHeight: 1.8, marginTop: 24, marginBottom: 28, fontSize: 15 }}>{sol.overview}</p>
+        <div style={{ padding: '0 32px 36px', borderTop: '1px solid #F3F4F6' }}>
+          <p style={{ color: '#4B5563', lineHeight: 1.85, marginTop: 24, marginBottom: 32, fontSize: 15 }}>{sol.overview}</p>
 
           {sol.pillars && (
-            <div style={{ marginBottom: 28 }}>
-              <h4 style={{ color: '#0A2540', marginBottom: 16, fontSize: 16 }}>Our Three Pillars</h4>
+            <div style={{ marginBottom: 32 }}>
+              <h4 style={{ color: '#062230', marginBottom: 16, fontSize: 15, fontWeight: 700 }}>Our Three Pillars</h4>
               <div className="grid-3">
                 {sol.pillars.map(p => (
-                  <div key={p.name} style={{ background: '#FAF7F2', borderRadius: 12, padding: 20 }}>
-                    <div style={{ fontWeight: 700, color: '#0A2540', fontSize: 15, marginBottom: 8 }}>{p.name}</div>
-                    <p style={{ color: '#4B5563', fontSize: 13, lineHeight: 1.6, marginBottom: 8 }}>{p.desc}</p>
-                    <p style={{ color: '#00B0ED', fontSize: 12, fontWeight: 600 }}>Key Areas: {p.areas}</p>
+                  <div key={p.name} style={{ background: '#F8F9FA', borderRadius: 14, padding: '20px 18px', border: '1px solid #E5E7EB' }}>
+                    <div style={{ fontWeight: 700, color: '#062230', fontSize: 14, marginBottom: 8 }}>{p.name}</div>
+                    <p style={{ color: '#4B5563', fontSize: 13, lineHeight: 1.65, marginBottom: 8 }}>{p.desc}</p>
+                    <p style={{ color: '#0078aa', fontSize: 12, fontWeight: 600 }}>Key Areas: {p.areas}</p>
                   </div>
                 ))}
               </div>
@@ -174,15 +221,15 @@ function SolutionCard({ sol, expanded, onToggle }) {
           )}
 
           {sol.capabilities && (
-            <div style={{ marginBottom: 28 }}>
-              <h4 style={{ color: '#0A2540', marginBottom: 16, fontSize: 16 }}>Our Capabilities</h4>
+            <div style={{ marginBottom: 32 }}>
+              <h4 style={{ color: '#062230', marginBottom: 16, fontSize: 15, fontWeight: 700 }}>Our Capabilities</h4>
               <div className="grid-2">
                 {sol.capabilities.map(c => (
                   <div key={c.name} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                    <CheckCircle size={18} color="#00B0ED" style={{ marginTop: 2, flexShrink: 0 }} />
+                    <CheckCircle size={17} color="#00B0ED" style={{ marginTop: 2, flexShrink: 0 }} />
                     <div>
-                      <div style={{ fontWeight: 600, color: '#0A2540', fontSize: 14 }}>{c.name}</div>
-                      <div style={{ color: '#4B5563', fontSize: 13 }}>{c.desc}</div>
+                      <div style={{ fontWeight: 600, color: '#062230', fontSize: 14 }}>{c.name}</div>
+                      <div style={{ color: '#4B5563', fontSize: 13, marginTop: 2 }}>{c.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -191,12 +238,12 @@ function SolutionCard({ sol, expanded, onToggle }) {
           )}
 
           {sol.services && (
-            <div style={{ marginBottom: 28 }}>
-              <h4 style={{ color: '#0A2540', marginBottom: 16, fontSize: 16 }}>Core Services</h4>
+            <div style={{ marginBottom: 32 }}>
+              <h4 style={{ color: '#062230', marginBottom: 14, fontSize: 15, fontWeight: 700 }}>Core Services</h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {sol.services.map(s => (
                   <li key={s} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                    <CheckCircle size={16} color="#00B0ED" style={{ marginTop: 2, flexShrink: 0 }} />
+                    <CheckCircle size={15} color="#00B0ED" style={{ marginTop: 3, flexShrink: 0 }} />
                     <span style={{ color: '#4B5563', fontSize: 14 }}>{s}</span>
                   </li>
                 ))}
@@ -205,34 +252,34 @@ function SolutionCard({ sol, expanded, onToggle }) {
           )}
 
           {sol.categories && (
-            <div style={{ marginBottom: 24 }}>
-              <h4 style={{ color: '#0A2540', marginBottom: 12, fontSize: 16 }}>Resource Categories</h4>
+            <div style={{ marginBottom: 28 }}>
+              <h4 style={{ color: '#062230', marginBottom: 12, fontSize: 15, fontWeight: 700 }}>Resource Categories</h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {sol.categories.map(c => (
-                  <span key={c} style={{ background: 'rgba(0,176,237,0.1)', color: '#0072a3', padding: '6px 14px', borderRadius: 100, fontSize: 13, fontWeight: 500 }}>{c}</span>
+                  <span key={c} style={{ background: 'rgba(0,176,237,0.08)', color: '#0078aa', padding: '6px 14px', borderRadius: 100, fontSize: 13, fontWeight: 500, border: '1px solid rgba(0,176,237,0.15)' }}>{c}</span>
                 ))}
               </div>
             </div>
           )}
 
           {sol.models && (
-            <div style={{ marginBottom: 24 }}>
-              <h4 style={{ color: '#0A2540', marginBottom: 12, fontSize: 16 }}>Engagement Models</h4>
+            <div style={{ marginBottom: 28 }}>
+              <h4 style={{ color: '#062230', marginBottom: 12, fontSize: 15, fontWeight: 700 }}>Engagement Models</h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {sol.models.map(m => (
-                  <span key={m} style={{ background: '#F3F4F6', color: '#4B5563', padding: '6px 14px', borderRadius: 100, fontSize: 13, fontWeight: 500 }}>{m}</span>
+                  <span key={m} style={{ background: '#F3F4F6', color: '#4B5563', padding: '6px 14px', borderRadius: 100, fontSize: 13, fontWeight: 500, border: '1px solid #E5E7EB' }}>{m}</span>
                 ))}
               </div>
             </div>
           )}
 
           {sol.value && (
-            <div style={{ background: 'linear-gradient(135deg, rgba(0,176,237,0.08), rgba(244,201,93,0.05))', borderRadius: 12, padding: 20, marginBottom: 24 }}>
-              <h4 style={{ color: '#0A2540', marginBottom: 12, fontSize: 15 }}>Business Value</h4>
+            <div style={{ background: 'linear-gradient(135deg, rgba(0,176,237,0.06), rgba(244,201,93,0.04))', borderRadius: 14, padding: '20px 22px', marginBottom: 24, border: '1px solid rgba(0,176,237,0.1)' }}>
+              <h4 style={{ color: '#062230', marginBottom: 12, fontSize: 14, fontWeight: 700 }}>Business Value</h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {sol.value.map(v => (
-                  <span key={v} style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#fff', color: '#0A2540', padding: '6px 14px', borderRadius: 8, fontSize: 13, fontWeight: 500, boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-                    <CheckCircle size={14} color="#00B0ED" /> {v}
+                  <span key={v} style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#fff', color: '#062230', padding: '7px 14px', borderRadius: 8, fontSize: 13, fontWeight: 500, boxShadow: '0 1px 4px rgba(0,0,0,0.06)', border: '1px solid #E5E7EB' }}>
+                    <CheckCircle size={13} color="#00B0ED" /> {v}
                   </span>
                 ))}
               </div>
@@ -241,7 +288,7 @@ function SolutionCard({ sol, expanded, onToggle }) {
 
           {sol.tech && (
             <div>
-              <h4 style={{ color: '#0A2540', marginBottom: 12, fontSize: 15 }}>Platforms & Technologies</h4>
+              <h4 style={{ color: '#062230', marginBottom: 12, fontSize: 14, fontWeight: 700 }}>Platforms & Technologies</h4>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
                 {sol.tech.map(t => <TechBadge key={t} name={t} />)}
               </div>
@@ -271,7 +318,7 @@ export default function Solutions() {
         <section className="section" style={{ background: '#F0F2F5' }}>
           <div className="container">
             {solutions.map((sol, i) => (
-              <FadeUp key={sol.id} delay={i * 0.07}>
+              <FadeUp key={sol.id} delay={i * 0.06}>
                 <SolutionCard
                   sol={sol}
                   expanded={expanded === sol.id}
@@ -284,12 +331,13 @@ export default function Solutions() {
 
         <FadeUp>
           <div className="cta-banner">
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 0%, #00B0ED 30%, #F4C95D 70%, transparent 100%)', zIndex: 2 }} />
             <div className="container">
               <h2>Not Sure Where to Begin?</h2>
               <p>Our team will help you identify the highest-impact opportunities for your organisation.</p>
               <div className="btn-group">
                 <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
-                <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Talk to Us</a>
+                <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Chat with Us</a>
               </div>
             </div>
           </div>
