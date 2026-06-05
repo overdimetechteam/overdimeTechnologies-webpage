@@ -5,7 +5,7 @@ export default function AnimatedPageHero({ children }) {
     <div
       className="page-hero"
       style={{
-        background: 'linear-gradient(135deg, #030f1a 0%, #062230 55%, #093040 100%)',
+        background: 'linear-gradient(135deg, #0f4d6e 0%, #062230 52%, #020d18 100%)',
         position: 'relative',
         isolation: 'isolate',
       }}
