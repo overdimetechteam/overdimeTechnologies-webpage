@@ -44,7 +44,7 @@ const cases = [
     description: 'Custom digital solutions designed to modernise key business processes for one of Sri Lanka\'s most respected automotive and diversified business groups.',
     results: ['Digitised key business workflows', 'Improved data accuracy and reporting', 'Enhanced customer service processes', 'Reduced operational overhead'],
     metric: '50%',
-    metricLabel: 'Reduction in process completion time',
+    metricLabel: 'Reduction in process cycle time',
   },
 ]
 
