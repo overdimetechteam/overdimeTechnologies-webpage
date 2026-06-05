@@ -117,14 +117,6 @@ export default function About() {
                 <span style={{ position: 'absolute', bottom: -40, right: -8, fontSize: 120, lineHeight: 1, color: 'rgba(244,201,93,0.10)', fontFamily: 'Georgia, serif', pointerEvents: 'none', userSelect: 'none' }}>"</span>
               </div>
 
-              {/* Founder attribution */}
-              <div style={{ marginTop: 44, display: 'inline-flex', alignItems: 'center', gap: 14, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 100, padding: '8px 22px 8px 8px' }}>
-                <div style={{ width: 42, height: 42, borderRadius: '50%', background: 'linear-gradient(135deg, #00B0ED 0%, #062230 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: 16, fontFamily: 'Plus Jakarta Sans', flexShrink: 0 }}>S</div>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ color: '#F4C95D', fontWeight: 700, fontSize: 14, fontFamily: 'Plus Jakarta Sans', lineHeight: 1.3 }}>Suresh de Silva</div>
-                  <div style={{ color: 'rgba(255,255,255,0.52)', fontSize: 12, marginTop: 2 }}>Founder &amp; CEO, Overdime Technologies</div>
-                </div>
-              </div>
             </FadeUp>
           </div>
         </section>
