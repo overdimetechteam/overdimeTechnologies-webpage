@@ -247,7 +247,10 @@ export default function Home() {
   useEffect(() => {
     if (hash === '#testimonials') {
       const el = document.getElementById('testimonials')
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150)
+      if (el) setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        window.history.replaceState(null, '', window.location.pathname)
+      }, 150)
     }
   }, [hash])
 
