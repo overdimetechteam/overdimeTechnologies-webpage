@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Heart, Lightbulb, Shield, Award } from 'lucide-react'
+import { Heart, Lightbulb, Shield, Award } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp, SlideLeft, SlideRight, AnimatedCounter } from '../components/Animate'
 import AnimatedPageHero from '../components/AnimatedPageHero'
@@ -36,9 +36,7 @@ export default function About() {
           <span className="section-label">About Us</span>
           <h1>About Overdime Technologies</h1>
           <p>A boutique automation agency dedicated to helping scaling companies achieve operational excellence through intelligent automation and practical digital solutions.</p>
-          <Link to="/contact#team" className="btn-primary" style={{ fontSize: 16 }}>
-            Meet Our Team <ArrowRight size={16} />
-          </Link>
+
         </AnimatedPageHero>
 
         {/* ── Our Story ── */}

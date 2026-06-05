@@ -118,7 +118,7 @@ function TestimonialsCarousel() {
         transform: fading ? 'translateY(6px)' : 'translateY(0)',
         transition: 'opacity 0.28s ease, transform 0.28s ease',
       }}>
-        <div style={{
+        <div className="testimonial-card" style={{
           background: 'linear-gradient(135deg, #FFFCF0 0%, #FFFEF8 100%)',
           borderRadius: 22,
           padding: '44px 48px',
@@ -279,7 +279,7 @@ export default function Home() {
       <section className="hero-section">
 
         {/* ── LEFT: white panel ── */}
-        <div style={{
+        <div className="hero-left" style={{
           flex: '0 0 50%',
           background: 'rgb(229,229,229)',
           display: 'flex',
@@ -289,19 +289,13 @@ export default function Home() {
           zIndex: 2,
         }}>
           <div style={{ maxWidth: 520, width: '100%' }}>
-            <div style={{ marginBottom: 22 }}>
-              <span style={{ color: '#00B0ED', fontSize: 20, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                A Boutique Automation Agency
-              </span>
-            </div>
-
             <h1 style={{ color: '#062230', fontSize: 'clamp(28px, 3.2vw, 52px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.08, marginBottom: 22 }}>
               Intelligent Automation<br />
               <span style={{ color: '#00B0ED' }}>for Enterprise Growth</span>
             </h1>
 
             <p style={{ color: '#4B5563', fontSize: 'clamp(14px, 1.2vw, 16px)', lineHeight: 1.8, marginBottom: 36 }}>
-              We help medium and large enterprises streamline operations, implement AI-powered solutions, and build custom systems that deliver measurable efficiency and sustainable growth — locally and globally.
+              We are a boutique automation agency helping medium and large enterprises streamline operations, implement AI-powered solutions, and build custom systems that deliver measurable efficiency and sustainable growth — locally and globally.
             </p>
 
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -316,7 +310,7 @@ export default function Home() {
         </div>
 
         {/* ── RIGHT: slideshow panel ── */}
-        <div style={{ flex: '0 0 50%', position: 'relative', overflow: 'hidden' }}>
+        <div className="hero-right" style={{ flex: '0 0 50%', position: 'relative', overflow: 'hidden' }}>
           {/* Slides */}
           {heroSlides.map((s, i) => (
             <div key={i} style={{
@@ -336,7 +330,7 @@ export default function Home() {
           </div>
 
           {/* Stat cards */}
-          <div style={{
+          <div className="hero-stats-container" style={{
             position: 'absolute', inset: 0, zIndex: 2,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: '100px 48px 170px',
@@ -344,15 +338,15 @@ export default function Home() {
             <div className="hero-stats-grid" style={{ width: '100%', maxWidth: 430 }}>
               {stats.map((s, i) => (
                 <div key={i} style={{
-                  background: 'rgba(6,34,48,0.62)',
+                  background: 'rgba(6,34,48,0.2)',
                   border: '1px solid rgba(255,255,255,0.10)',
                   borderTop: `3px solid ${s.accent}`,
                   borderRadius: 18, padding: '28px 20px',
                   backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
                   transition: 'background 0.25s, transform 0.25s', cursor: 'default',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.82)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.62)'; e.currentTarget.style.transform = 'translateY(0)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.38)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.2)'; e.currentTarget.style.transform = 'translateY(0)' }}
                 >
                   <div style={{ fontSize: 'clamp(22px, 2.4vw, 36px)', fontWeight: 900, color: s.accent, fontFamily: 'Plus Jakarta Sans', lineHeight: 1, marginBottom: 10 }}>
                     {s.numericTo !== null
@@ -518,7 +512,7 @@ export default function Home() {
           <FadeUp>
             <span className="section-label section-label-dark">Proven Results</span>
             <h2 style={{ color: '#fff', fontSize: 'clamp(24px, 3vw, 40px)', marginBottom: 16 }}>
-              Delivering Real Impact for Forward-Thinking Organisations
+              Delivering Real Impact for<br />Forward-Thinking Organisations
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 17, maxWidth: 540, margin: '0 auto 56px', lineHeight: 1.7 }}>
               Our intelligent solutions consistently deliver measurable improvements across key business metrics.
