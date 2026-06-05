@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { X } from 'lucide-react'
 
 const toasts = [
@@ -17,14 +17,58 @@ const toasts = [
   },
 ]
 
-/* Random integer between min and max (inclusive) */
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
 
 export default function TestimonialToast() {
   const [visible, setVisible]   = useState(false)
   const [current, setCurrent]   = useState(0)
   const dismissedRef            = useRef(false)
+  const blockedRef              = useRef(false)
+  const visibleRef              = useRef(false)
   const navigate                = useNavigate()
+  const location                = useLocation()
+
+  /* Sync visible state + ref together */
+  const show = (val) => {
+    setVisible(val)
+    visibleRef.current = val
+  }
+
+  /* Re-runs whenever the route changes so we re-query the correct DOM elements */
+  useEffect(() => {
+    let removeScroll = null
+
+    const t = setTimeout(() => {
+      const els = [
+        document.querySelector('.hero-section'),
+        document.getElementById('testimonials'),
+      ].filter(Boolean)
+
+      if (els.length === 0) {
+        blockedRef.current = false
+        return
+      }
+
+      const check = () => {
+        const isBlocked = els.some(el => {
+          const r = el.getBoundingClientRect()
+          return r.top < window.innerHeight && r.bottom > 0
+        })
+        blockedRef.current = isBlocked
+        /* Hide immediately if user scrolls into a blocked section */
+        if (isBlocked && visibleRef.current) show(false)
+      }
+
+      check()
+      window.addEventListener('scroll', check, { passive: true })
+      removeScroll = () => window.removeEventListener('scroll', check)
+    }, 100)
+
+    return () => {
+      clearTimeout(t)
+      if (removeScroll) removeScroll()
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     let showTimer, hideTimer, nextTimer
@@ -33,20 +77,22 @@ export default function TestimonialToast() {
       showTimer = setTimeout(() => {
         if (dismissedRef.current) return
 
-        /* Pick a different testimonial each time */
-        setCurrent(prev => (prev + 1) % toasts.length)
-        setVisible(true)
+        /* Skip this cycle if hero or testimonials section is in view */
+        if (blockedRef.current) {
+          nextTimer = setTimeout(() => cycle(rand(22000, 38000)), 500)
+          return
+        }
 
-        /* Auto-hide after 7 s */
+        setCurrent(prev => (prev + 1) % toasts.length)
+        show(true)
+
         hideTimer = setTimeout(() => {
-          setVisible(false)
-          /* Wait for slide-out (500 ms), then schedule next appearance */
+          show(false)
           nextTimer = setTimeout(() => cycle(rand(22000, 38000)), 500)
         }, 7000)
       }, initialDelay)
     }
 
-    /* First appearance: random 10–18 s after page load */
     cycle(rand(10000, 18000))
 
     return () => {
@@ -58,7 +104,7 @@ export default function TestimonialToast() {
 
   const dismiss = () => {
     dismissedRef.current = true
-    setVisible(false)
+    show(false)
   }
 
   const t = toasts[current]
@@ -72,12 +118,10 @@ export default function TestimonialToast() {
         bottom: 28,
         left: 28,
         zIndex: 997,
-        /* Keep it off-screen when hidden, slide in when visible */
         transform: visible
           ? 'translateX(0) translateY(0)'
           : 'translateX(calc(-100% - 36px))',
         opacity: visible ? 1 : 0,
-        /* Slight spring overshoot on enter via cubic-bezier */
         transition: visible
           ? 'transform 0.48s cubic-bezier(0.34, 1.42, 0.64, 1), opacity 0.32s ease'
           : 'transform 0.40s cubic-bezier(0.55, 0, 0.45, 1), opacity 0.28s ease',
@@ -89,7 +133,7 @@ export default function TestimonialToast() {
       <div style={{
         background: '#ffffff',
         borderRadius: 16,
-        padding: '16px 40px 16px 18px',  /* right padding for × button */
+        padding: '16px 40px 16px 18px',
         boxShadow: '0 8px 48px rgba(6,34,48,0.16), 0 2px 12px rgba(6,34,48,0.08)',
         border: '1px solid rgba(0,176,237,0.14)',
         borderLeft: '4px solid #00B0ED',

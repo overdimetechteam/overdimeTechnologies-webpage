@@ -119,15 +119,12 @@ function TestimonialsCarousel() {
         transition: 'opacity 0.28s ease, transform 0.28s ease',
       }}>
         <div style={{
-          background: t.dark
-            ? 'linear-gradient(135deg, #062230, #0a3848)'
-            : '#fff',
+          background: 'linear-gradient(135deg, #FFFCF0 0%, #FFFEF8 100%)',
           borderRadius: 22,
           padding: '44px 48px',
-          boxShadow: t.dark
-            ? '0 12px 48px rgba(10,37,64,0.28)'
-            : '0 4px 28px rgba(10,37,64,0.09)',
-          border: t.dark ? 'none' : '1px solid #E5E7EB',
+          boxShadow: '0 4px 32px rgba(10,37,64,0.09)',
+          border: '1px solid rgba(244,201,93,0.30)',
+          borderLeft: '5px solid #F4C95D',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -135,7 +132,7 @@ function TestimonialsCarousel() {
           <span style={{
             position: 'absolute', top: 10, right: 24,
             fontSize: 140, lineHeight: 1,
-            color: t.dark ? 'rgba(0,176,237,0.09)' : 'rgba(0,176,237,0.06)',
+            color: 'rgba(244,201,93,0.15)',
             fontFamily: 'Georgia, serif',
             pointerEvents: 'none', userSelect: 'none',
           }}>"</span>
@@ -148,7 +145,7 @@ function TestimonialsCarousel() {
           </div>
 
           <p style={{
-            color: t.dark ? 'rgba(255,255,255,0.84)' : '#1F2937',
+            color: '#1F2937',
             fontSize: 16, lineHeight: 1.88, fontStyle: 'italic',
             marginBottom: 32, position: 'relative', zIndex: 1,
           }}>
@@ -157,15 +154,12 @@ function TestimonialsCarousel() {
 
           <div style={{
             display: 'flex', alignItems: 'center', gap: 14,
-            borderTop: t.dark ? '1px solid rgba(255,255,255,0.10)' : '1px solid #F3F4F6',
+            borderTop: '1px solid rgba(244,201,93,0.25)',
             paddingTop: 22,
           }}>
             <div style={{
               width: 48, height: 48, borderRadius: '50%', flexShrink: 0,
-              background: t.dark
-                ? 'rgba(0,176,237,0.22)'
-                : 'linear-gradient(135deg, #00B0ED 0%, #062230 100%)',
-              border: t.dark ? '1px solid rgba(0,176,237,0.30)' : 'none',
+              background: 'linear-gradient(135deg, #00B0ED 0%, #062230 100%)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               color: '#fff', fontWeight: 800, fontSize: 18,
               fontFamily: 'Plus Jakarta Sans',
@@ -173,8 +167,8 @@ function TestimonialsCarousel() {
               {t.initial}
             </div>
             <div>
-              <div style={{ fontWeight: 700, fontSize: 15, fontFamily: 'Plus Jakarta Sans', color: t.dark ? '#fff' : '#062230' }}>{t.name}</div>
-              <div style={{ fontSize: 13, marginTop: 2, color: t.dark ? 'rgba(255,255,255,0.55)' : '#4B5563' }}>{t.role}</div>
+              <div style={{ fontWeight: 700, fontSize: 15, fontFamily: 'Plus Jakarta Sans', color: '#062230' }}>{t.name}</div>
+              <div style={{ fontSize: 13, marginTop: 2, color: '#4B5563' }}>{t.role}</div>
             </div>
           </div>
         </div>
@@ -283,8 +277,47 @@ export default function Home() {
 
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="hero-section">
-        {/* Slideshow */}
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+
+        {/* ── LEFT: white panel ── */}
+        <div style={{
+          flex: '0 0 50%',
+          background: 'rgb(229,229,229)',
+          display: 'flex',
+          alignItems: 'center',
+          padding: 'clamp(88px, 12vh, 140px) 60px clamp(140px, 16vh, 180px) clamp(32px, 5vw, 80px)',
+          position: 'relative',
+          zIndex: 2,
+        }}>
+          <div style={{ maxWidth: 520, width: '100%' }}>
+            <div style={{ marginBottom: 22 }}>
+              <span style={{ color: '#00B0ED', fontSize: 20, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                A Boutique Automation Agency
+              </span>
+            </div>
+
+            <h1 style={{ color: '#062230', fontSize: 'clamp(28px, 3.2vw, 52px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.08, marginBottom: 22 }}>
+              Intelligent Automation<br />
+              <span style={{ color: '#00B0ED' }}>for Enterprise Growth</span>
+            </h1>
+
+            <p style={{ color: '#4B5563', fontSize: 'clamp(14px, 1.2vw, 16px)', lineHeight: 1.8, marginBottom: 36 }}>
+              We help medium and large enterprises streamline operations, implement AI-powered solutions, and build custom systems that deliver measurable efficiency and sustainable growth — locally and globally.
+            </p>
+
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link to="/contact" className="btn-primary" style={{ fontSize: 15 }}>
+                Schedule a Free Consultation <ArrowRight size={16} />
+              </Link>
+              <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-gold" style={{ fontSize: 15 }}>
+                Chat with Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── RIGHT: slideshow panel ── */}
+        <div style={{ flex: '0 0 50%', position: 'relative', overflow: 'hidden' }}>
+          {/* Slides */}
           {heroSlides.map((s, i) => (
             <div key={i} style={{
               position: 'absolute', inset: 0,
@@ -294,26 +327,72 @@ export default function Home() {
               transition: 'opacity 0.8s ease-in-out',
             }} />
           ))}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(105deg, rgba(5,15,30,0.75) 0%, rgba(5,15,30,0.52) 50%, rgba(5,15,30,0.22) 100%)' }} />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 120, background: 'linear-gradient(to top, rgba(5,15,30,0.4) 0%, transparent 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 2 }}>
+          {/* Dark overlay */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(5,15,30,0.82) 0%, rgba(5,15,30,0.58) 60%, rgba(5,15,30,0.38) 100%)' }} />
+          {/* Textures */}
+          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
             <Grain dark opacity={0.8} />
             <Scanlines opacity={0.015} />
-            <NoiseVignette />
+          </div>
+
+          {/* Stat cards */}
+          <div style={{
+            position: 'absolute', inset: 0, zIndex: 2,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: '100px 48px 170px',
+          }}>
+            <div className="hero-stats-grid" style={{ width: '100%', maxWidth: 430 }}>
+              {stats.map((s, i) => (
+                <div key={i} style={{
+                  background: 'rgba(6,34,48,0.62)',
+                  border: '1px solid rgba(255,255,255,0.10)',
+                  borderTop: `3px solid ${s.accent}`,
+                  borderRadius: 18, padding: '28px 20px',
+                  backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+                  transition: 'background 0.25s, transform 0.25s', cursor: 'default',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.82)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.62)'; e.currentTarget.style.transform = 'translateY(0)' }}
+                >
+                  <div style={{ fontSize: 'clamp(22px, 2.4vw, 36px)', fontWeight: 900, color: s.accent, fontFamily: 'Plus Jakarta Sans', lineHeight: 1, marginBottom: 10 }}>
+                    {s.numericTo !== null
+                      ? <AnimatedCounter to={s.numericTo} suffix={s.numericSuffix} duration={1.6} />
+                      : s.value
+                    }
+                  </div>
+                  <div style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, lineHeight: 1.55 }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Slide dots */}
+          <div style={{ position: 'absolute', bottom: 140, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, zIndex: 4 }}>
+            {heroSlides.map((_, i) => (
+              <button key={i} onClick={() => goToSlide(i)} aria-label={`Slide ${i + 1}`} style={{
+                width: i === slide ? 32 : 8, height: 8, borderRadius: 100,
+                background: i === slide ? '#F4C95D' : 'rgba(255,255,255,0.35)',
+                border: 'none', cursor: 'pointer', padding: 0,
+                transition: 'all 0.35s ease',
+                boxShadow: i === slide ? '0 0 8px rgba(244,201,93,0.5)' : 'none',
+              }} />
+            ))}
           </div>
         </div>
 
-        {/* Full-width trusted-by strip */}
+        {/* Full-width trusted-by strip — spans both panels */}
         <div style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
-          borderTop: '1px solid rgba(255,255,255,0.08)',
+          borderTop: '1px solid #E5E7EB',
           padding: '14px 0 18px',
-          background: 'rgba(5,15,30,0.55)',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
-          zIndex: 3,
+          background: 'rgba(255,255,255,0.97)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          zIndex: 5,
         }}>
-          <p style={{ color: 'rgba(255,255,255,0.50)', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 12 }}>
+          <p style={{ color: '#9CA3AF', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 12 }}>
             Trusted by leading organisations
           </p>
           <div className="marquee-outer">
@@ -324,8 +403,8 @@ export default function Home() {
                   alignItems: 'center', justifyContent: 'center',
                   height: 60, padding: '6px 20px 8px', marginRight: 14,
                   background: '#fff', borderRadius: 10, flexShrink: 0,
-                  gap: 5, boxShadow: '0 2px 8px rgba(0,0,0,0.20)',
-                  border: '1px solid rgba(255,255,255,0.90)',
+                  gap: 5, boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  border: '1px solid rgba(0,0,0,0.07)',
                 }}>
                   <img src={c.logo} alt={c.name} style={{ height: 22, maxWidth: 120, objectFit: 'contain' }} />
                   <span style={{ fontSize: 11, fontWeight: 700, color: '#062230', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
@@ -334,79 +413,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Slide dots */}
-        <div style={{ position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, zIndex: 4 }}>
-          {heroSlides.map((_, i) => (
-            <button key={i} onClick={() => goToSlide(i)} aria-label={`Slide ${i + 1}`} style={{
-              width: i === slide ? 32 : 8, height: 8, borderRadius: 100,
-              background: i === slide ? '#F4C95D' : 'rgba(255,255,255,0.35)',
-              border: 'none', cursor: 'pointer', padding: 0,
-              transition: 'all 0.35s ease',
-              boxShadow: i === slide ? '0 0 8px rgba(244,201,93,0.5)' : 'none',
-            }} />
-          ))}
-        </div>
-
-        <div className="container hero-container" style={{ paddingBottom: 160 }}>
-          <div className="hero-grid">
-
-            {/* Left: copy */}
-            <div style={{ minWidth: 0 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 24 }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#00B0ED', flexShrink: 0, display: 'inline-block' }} />
-                <span style={{ color: '#00B0ED', fontSize: 20, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Boutique Automation Agency</span>
-              </div>
-
-              <h1 style={{ color: '#fff', fontSize: 'clamp(30px, 4vw, 56px)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, lineHeight: 1.08, marginBottom: 22 }}>
-                Intelligent Automation<br />
-                <span style={{ color: '#00B0ED' }}>for Enterprise Growth</span>
-              </h1>
-
-              <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 'clamp(14px, 1.3vw, 16px)', lineHeight: 1.8, marginBottom: 36 }}>
-                We help medium and large enterprises streamline operations, implement AI-powered solutions, and build custom systems that deliver measurable efficiency and sustainable growth — locally and globally.
-              </p>
-
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 44 }}>
-                <Link to="/contact" className="btn-primary" style={{ fontSize: 15 }}>
-                  Schedule a Free Consultation <ArrowRight size={16} />
-                </Link>
-                <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-gold" style={{ fontSize: 15 }}>
-                  Chat with Us
-                </a>
-              </div>
-
-            </div>
-
-            {/* Right: stat cards */}
-            <div className="hero-stats-grid">
-              {stats.map((s, i) => (
-                <div key={i} style={{
-                  background: 'rgba(6,34,48,0.62)',
-                  border: '1px solid rgba(255,255,255,0.10)',
-                  borderTop: `3px solid ${s.accent}`,
-                  borderRadius: 18, padding: '28px 20px',
-                  backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-                  transition: 'background 0.25s, transform 0.25s', cursor: 'default',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.80)'; e.currentTarget.style.transform = 'translateY(-3px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(6,34,48,0.62)'; e.currentTarget.style.transform = 'translateY(0)' }}
-                >
-                  <div style={{ fontSize: 'clamp(24px, 2.8vw, 38px)', fontWeight: 900, color: s.accent, fontFamily: 'Plus Jakarta Sans', lineHeight: 1, marginBottom: 10 }}>
-                    {s.numericTo !== null
-                      ? <AnimatedCounter to={s.numericTo} suffix={s.numericSuffix} duration={1.6} />
-                      : s.value
-                    }
-                  </div>
-                  <div style={{ color: 'rgba(255,255,255,0.58)', fontSize: 13, lineHeight: 1.55 }}>
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
           </div>
         </div>
       </section>

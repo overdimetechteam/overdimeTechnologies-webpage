@@ -189,24 +189,11 @@ button { cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
   margin-bottom: 16px;
   line-height: 1;
 }
-.section-label::before {
-  content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-  flex-shrink: 0;
-}
 
 /* Dark-background override via ancestor class (AnimatedPageHero) */
 .page-hero-content .section-label,
 .section-label-dark {
   color: var(--gold);
-}
-.page-hero-content .section-label::before,
-.section-label-dark::before {
-  background: var(--gold);
 }
 
 /* ──── Cards ──── */
@@ -280,8 +267,7 @@ button { cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
 .page-hero {
   background: linear-gradient(135deg, var(--navy) 0%, #0a3848 100%);
   color: var(--white);
-  /* No negative margin — pill nav floats above, doesn't push content */
-  padding: 190px 0 88px;
+  padding: 160px 0 88px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -302,9 +288,8 @@ button { cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
 /* ──── Hero section ──── */
 .hero-section {
   min-height: 100vh;
-  /* No negative margin — pill nav floats over the hero naturally */
   display: flex;
-  align-items: center;
+  align-items: stretch;
   padding: 0;
   position: relative;
 }
@@ -387,7 +372,7 @@ textarea:focus {
 .marquee-inner {
   display: flex;
   width: max-content;
-  animation: marquee 20s linear infinite;
+  animation: marquee 38s linear infinite;
 }
 .marquee-inner:hover { animation-play-state: paused; }
 
@@ -446,6 +431,7 @@ textarea:focus {
 }
 
 @media (max-width: 768px) {
+  .hero-section { flex-direction: column; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .section { padding: 64px 0; }
   .container { padding: 0 20px; }

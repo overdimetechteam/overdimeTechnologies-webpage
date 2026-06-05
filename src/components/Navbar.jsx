@@ -42,39 +42,31 @@ export default function Navbar() {
     window.scrollTo(0, 0)
   }, [location.pathname])
 
-  /* ─── always-light pill — slightly more transparent before scroll ── */
-  const bg     = scrolled ? 'rgba(255,255,255,0.76)' : 'rgba(255,255,255,0.58)'
-  const border = '1px solid rgba(0,0,0,0.07)'
-  const shadow = scrolled
-    ? '0 6px 36px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,1)'
-    : '0 4px 24px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.9)'
+  const bg     = scrolled ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.80)'
+  const shadow = scrolled ? '0 2px 20px rgba(0,0,0,0.10)' : 'none'
+  const borderBottom = scrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid transparent'
 
   return (
     <nav style={{
       position: 'fixed',
-      /* Centre the pill horizontally */
-      top: 14,
-      left: '50%',
-      /* Combine centering + show/hide into one transform */
-      transform: visible
-        ? 'translateX(-50%) translateY(0)'
-        : 'translateX(-50%) translateY(-160%)',
-      /* Pill width — full-minus-gutter up to max */
-      width: 'min(1140px, calc(100% - 28px))',
+      top: 0,
+      left: 0,
+      width: '100%',
       zIndex: 1000,
-      borderRadius: 100,
       background: bg,
       backdropFilter: 'blur(20px)',
       WebkitBackdropFilter: 'blur(20px)',
-      border,
       boxShadow: shadow,
-      transition: 'background 0.35s ease, border 0.35s ease, box-shadow 0.35s ease, transform 0.38s cubic-bezier(0.34,1.28,0.64,1)',
+      borderBottom,
+      transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+      transition: 'background 0.35s ease, box-shadow 0.35s ease, border-bottom 0.35s ease, transform 0.38s cubic-bezier(0.34,1.28,0.64,1)',
     }}>
 
-      {/* ── Inner row ── */}
+      {/* ── Inner row — aligned to container width ── */}
       <div style={{
+        maxWidth: 1200, margin: '0 auto',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        height: 72, padding: '0 14px 0 10px',
+        height: 72, padding: '0 24px',
       }}>
 
         {/* Logo */}
