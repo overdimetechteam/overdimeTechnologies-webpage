@@ -108,8 +108,7 @@ export default function Careers() {
           <div className="container">
             <FadeUp>
               <div style={{ textAlign: 'center', marginBottom: 56 }}>
-                <span className="section-label">Why Join Overdime</span>
-                <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)', marginTop: 10 }}>What Makes Working Here Different</h2>
+                <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>What Makes Working Here Different</h2>
               </div>
             </FadeUp>
             <div className="perks-grid">

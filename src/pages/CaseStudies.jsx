@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
-import { ArrowRight, TrendingUp } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ArrowRight, TrendingUp, X } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
 import AnimatedPageHero from '../components/AnimatedPageHero'
@@ -15,12 +15,50 @@ const cases = [
     logoBg: 'linear-gradient(135deg, #00B0ED 0%, #062230 100%)',
     category: 'Intelligent Automation',
     title: 'Enterprise Process Automation',
-    description: 'End-to-end process automation for one of Sri Lanka\'s leading conglomerates, transforming manual workflows into intelligent digital processes across multiple business units.',
+    description: 'By implementing WorkHub24 with Overdime Technologies, Colombo Fort Group streamlined operations across 58 companies, reduced human errors, improved collaboration, and achieved greater transparency in workflows. The automation of 20+ processes has delivered measurable time and cost savings, while supporting over 1,500 executives with just 50 concurrent licenses—a scalable, cost-efficient model that sets a benchmark in Sri Lanka\'s digital transformation landscape.',
     results: ['Reduced human errors significantly', 'Achieved better cross-departmental collaboration', 'Gained high process transparency', 'Ability to pinpoint bottlenecks in real-time'],
     metric: '45%',
     metricLabel: 'Reduction in manual processing time',
     quote: 'We can now pinpoint the bottleneck — something that was impossible before.',
     attribution: 'Lalith Kulasinghe, Executive Director / CEO',
+    fullDetails: {
+      subtitle: 'A WorkHub24 and Overdime Technologies success story',
+      challenge: {
+        intro: 'Large conglomerates often struggle with maintaining transparency and efficiency across diverse businesses. Colombo Fort Group, with listed entities such as Lankem Ceylon PLC and E. B. Creasy & Co. PLC, faced:',
+        points: [
+          'Fragmented IT systems across 58 companies',
+          'Manual processes prone to errors',
+          'Difficulty pinpointing bottlenecks across the group',
+        ],
+      },
+      solution: {
+        intro: 'Partnering with Overdime Technologies, the Group adopted WorkHub24 as its workflow automation platform. Key steps included:',
+        points: [
+          'Gradual rollout over two years across 20 processes',
+          'Integration with SAP, Salesforce, and Office 365',
+          'Flexible concurrent licensing model to optimise costs',
+          'Tailored process re-engineering where needed, while preserving existing workflows',
+        ],
+      },
+      results: [
+        { label: 'Error reduction',      detail: 'Significant drop in manual mistakes across all business units' },
+        { label: 'Transparency',         detail: 'Real-time visibility into delays and bottlenecks' },
+        { label: 'Efficiency gains',     detail: 'Time savings directly translating into cost savings' },
+        { label: 'Scalable adoption',    detail: '50 licenses supporting over 1,500 executives' },
+        { label: 'Process coverage',     detail: 'Petty cash automation across 58 companies and 72 locations; corporate insurance claims fully digitised' },
+      ],
+      testimonial: {
+        quote: 'Colombo Fort Group partnered with Overdime Technologies for the implementation of WorkHub24, recognising them as a trusted and capable technology partner. Their flexible approach allowed them to adapt to our unique requirements rather than enforcing rigid frameworks. The strong relationship built on trust and collaboration played a key role in the project\'s success. Overdime\'s access to high-quality expert resources ensured a smooth and efficient implementation, while their phased model helped us mitigate risks, control costs, train users effectively, and achieve a high return on investment.',
+        name: 'Lalith Kulasinghe',
+        role: 'Executive Director & CEO, Colombo Fort Group Services (Pvt) Ltd',
+      },
+      takeaways: [
+        { label: 'Integrated simplicity',      detail: 'Four core platforms (SAP, WorkHub24, Office 365, Salesforce) replaced a fragmented IT landscape.' },
+        { label: 'Cost-efficient scalability', detail: 'Concurrent licensing maximised ROI across 58 companies.' },
+        { label: 'Human impact',               detail: 'Automation redeployed staff to higher-value roles, dispelling myths about job losses.' },
+        { label: 'Strategic transformation',   detail: 'Workflow automation became a pillar of the Group\'s digital strategy.' },
+      ],
+    },
   },
   {
     client: 'Dialog Axiata',
@@ -48,8 +86,146 @@ const cases = [
   },
 ]
 
+function CaseStudyModal({ cs, onClose }) {
+  const d = cs.fullDetails
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = '' }
+  }, [])
+
+  const backdrop = {
+    position: 'fixed', inset: 0, zIndex: 1000,
+    background: 'rgba(3,15,26,0.72)',
+    backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    padding: '24px 16px',
+  }
+
+  const shell = {
+    borderRadius: 20, overflow: 'hidden',
+    width: '100%', maxWidth: 760,
+    boxShadow: '0 24px 80px rgba(3,15,26,0.36)',
+  }
+
+  const scroller = { maxHeight: '88vh', overflowY: 'auto' }
+
+  const header = {
+    position: 'sticky', top: 0, zIndex: 2,
+    background: 'linear-gradient(135deg, #030f1a 0%, #062230 100%)',
+    padding: '28px 36px 24px',
+  }
+
+  const closeBtn = {
+    position: 'absolute', top: 18, right: 18,
+    background: 'rgba(255,255,255,0.10)', border: 'none',
+    borderRadius: 8, padding: 7, cursor: 'pointer',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    transition: 'background 0.18s',
+  }
+
+  return (
+    <div style={backdrop} onClick={onClose}>
+      <div style={shell} onClick={e => e.stopPropagation()}>
+        <div className="modal-scroll" style={scroller}>
+          <div style={header}>
+            <button
+              onClick={onClose}
+              style={closeBtn}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.20)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.10)' }}
+            >
+              <X size={16} color="#fff" />
+            </button>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#00B0ED', marginBottom: 6 }}>
+              Case Study — {cs.client}
+            </div>
+            <h2 style={{ color: '#fff', fontSize: 'clamp(18px, 2.4vw, 26px)', fontFamily: 'Plus Jakarta Sans', margin: 0, lineHeight: 1.2 }}>
+              {cs.title}
+            </h2>
+            {d.subtitle && (
+              <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, marginTop: 6, fontStyle: 'italic' }}>{d.subtitle}</p>
+            )}
+          </div>
+          <div style={{ padding: '36px 36px 40px', background: '#fff' }}>
+            <p style={{ color: '#374151', fontSize: 15, lineHeight: 1.85, marginBottom: 32 }}>{cs.description}</p>
+            <hr style={{ border: 'none', borderTop: '1px solid #F3F4F6', marginBottom: 32 }} />
+            <Section label="Challenge">
+              <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.8, marginBottom: 14 }}>{d.challenge.intro}</p>
+              <BulletList items={d.challenge.points} />
+            </Section>
+            <Section label="Solution">
+              <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.8, marginBottom: 14 }}>{d.solution.intro}</p>
+              <BulletList items={d.solution.points} />
+            </Section>
+            <Section label="Results">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {d.results.map((r, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#00B0ED', flexShrink: 0, marginTop: 6 }} />
+                    <div style={{ fontSize: 14, color: '#374151', lineHeight: 1.65 }}>
+                      <strong style={{ color: '#062230' }}>{r.label}:</strong> {r.detail}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+            <Section label="Client testimonial">
+              <div style={{ background: 'linear-gradient(135deg, #FFFCF0 0%, #FFFEF8 100%)', border: '1px solid rgba(244,201,93,0.30)', borderLeft: '4px solid #F4C95D', borderRadius: '0 12px 12px 0', padding: '20px 22px' }}>
+                <p style={{ color: '#374151', fontSize: 14, lineHeight: 1.8, fontStyle: 'italic', marginBottom: 14 }}>"{d.testimonial.quote}"</p>
+                <div style={{ fontWeight: 700, color: '#062230', fontSize: 13 }}>{d.testimonial.name}</div>
+                <div style={{ color: '#6B7280', fontSize: 12, marginTop: 2 }}>{d.testimonial.role}</div>
+              </div>
+            </Section>
+            <Section label="Key takeaways" last>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {d.takeaways.map((t, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F4C95D', flexShrink: 0, marginTop: 6 }} />
+                    <div style={{ fontSize: 14, color: '#374151', lineHeight: 1.65 }}>
+                      <strong style={{ color: '#062230' }}>{t.label}:</strong> {t.detail}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Section({ label, children, last }) {
+  return (
+    <div style={{ marginBottom: last ? 0 : 28 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#00B0ED', marginBottom: 12 }}>
+        {label}
+      </div>
+      {children}
+      {!last && <hr style={{ border: 'none', borderTop: '1px solid #F3F4F6', marginTop: 28 }} />}
+    </div>
+  )
+}
+
+function BulletList({ items }) {
+  return (
+    <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+          <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(0,176,237,0.1)', border: '1px solid rgba(0,176,237,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#00B0ED" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </div>
+          <span style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.6 }}>{item}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default function CaseStudies() {
-  const [active, setActive] = useState('All')
+  const [active, setActive]   = useState('All')
+  const [modal, setModal]     = useState(null)
   const filtered = active === 'All' ? cases : cases.filter(c => c.category === active)
 
   return (
@@ -133,10 +309,16 @@ export default function CaseStudies() {
                       </div>
 
                       {cs.quote && (
-                        <div style={{ background: 'linear-gradient(135deg, rgba(0,176,237,0.05), rgba(0,176,237,0.02))', borderLeft: '3px solid #00B0ED', padding: '14px 18px', borderRadius: '0 10px 10px 0', marginBottom: 0 }}>
+                        <div style={{ background: 'linear-gradient(135deg, rgba(0,176,237,0.05), rgba(0,176,237,0.02))', borderLeft: '3px solid #00B0ED', padding: '14px 18px', borderRadius: '0 10px 10px 0', marginBottom: cs.fullDetails ? 22 : 0 }}>
                           <p style={{ color: '#1F2937', fontSize: 13, fontStyle: 'italic', lineHeight: 1.65 }}>"{cs.quote}"</p>
                           <p style={{ color: '#4B5563', fontSize: 12, marginTop: 6, fontWeight: 600 }}>— {cs.attribution}</p>
                         </div>
+                      )}
+
+                      {cs.fullDetails && (
+                        <button onClick={() => setModal(cs)} className="btn-gold" style={{ fontSize: 13 }}>
+                          View full case study <ArrowRight size={14} />
+                        </button>
                       )}
                     </div>
 
@@ -148,7 +330,6 @@ export default function CaseStudies() {
                       justifyContent: 'center', alignItems: 'center', textAlign: 'center',
                       position: 'relative', overflow: 'hidden',
                     }}>
-                      {/* Dot grid */}
                       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)', backgroundSize: '22px 22px', pointerEvents: 'none' }} />
                       <div style={{ position: 'relative', zIndex: 1 }}>
                         <TrendingUp size={40} color="rgba(0,176,237,0.35)" style={{ marginBottom: 24 }} />
@@ -191,6 +372,8 @@ export default function CaseStudies() {
           </div>
         </FadeUp>
       </div>
+
+      {modal && <CaseStudyModal cs={modal} onClose={() => setModal(null)} />}
     </PageTransition>
   )
 }

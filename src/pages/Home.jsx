@@ -14,12 +14,12 @@ const heroSlides = [
 ]
 
 const solutions = [
-  { icon: <Zap size={26} color="#00B0ED" />, title: 'Intelligent Process Automation', desc: 'Streamline workflows with RPA, intelligent automation, and Agentic AI to reduce manual effort and drive operational excellence.' },
-  { icon: <Bot size={26} color="#00B0ED" />, title: 'AI Integrated Solutions', desc: 'Develop intelligent bots, virtual assistants, and AI systems that enhance decision-making and customer engagement.' },
-  { icon: <Globe size={26} color="#00B0ED" />, title: 'Custom Web Applications', desc: 'Build tailored applications and secure portals designed specifically for your business processes.' },
-  { icon: <Database size={26} color="#00B0ED" />, title: 'ERP Solutions', desc: 'Implement modern platforms that bring visibility, control, and collaboration across your organisation.' },
-  { icon: <TrendingUp size={26} color="#00B0ED" />, title: 'Digital Transformation Consultancy', desc: 'Expert guidance in defining and executing digital transformation strategies, process optimisation, and technology roadmapping.' },
-  { icon: <Users size={26} color="#00B0ED" />, title: 'Resource Augmentation', desc: 'Access skilled technology professionals through flexible engagement models to scale teams and access specialised expertise.' },
+  { icon: <Zap size={26} color="#00B0ED" />, slug: 'ipa',        title: 'Intelligent Process Automation', desc: 'Streamline workflows with RPA, intelligent automation, and Agentic AI to reduce manual effort and drive operational excellence.' },
+  { icon: <Bot size={26} color="#00B0ED" />, slug: 'ai',         title: 'AI Integrated Solutions', desc: 'Develop intelligent bots, virtual assistants, and AI systems that enhance decision-making and customer engagement.' },
+  { icon: <Globe size={26} color="#00B0ED" />, slug: 'web',      title: 'Custom Web Applications', desc: 'Build tailored applications and secure portals designed specifically for your business processes.' },
+  { icon: <Database size={26} color="#00B0ED" />, slug: 'erp',   title: 'ERP Solutions', desc: 'Implement modern platforms that bring visibility, control, and collaboration across your organisation.' },
+  { icon: <TrendingUp size={26} color="#00B0ED" />, slug: 'consulting', title: 'Digital Transformation Consultancy', desc: 'Expert guidance in defining and executing digital transformation strategies, process optimisation, and technology roadmapping.' },
+  { icon: <Users size={26} color="#00B0ED" />, slug: 'staffing', title: 'Resource Augmentation', desc: 'Access skilled technology professionals through flexible engagement models to scale teams and access specialised expertise.' },
 ]
 
 /* numericTo: null = non-numeric value, just render as text with FadeUp */
@@ -473,28 +473,30 @@ export default function Home() {
           <div className="grid-3">
             {solutions.map((s, i) => (
               <FadeUp key={s.title} delay={i * 0.08}>
-                <div style={{
-                  background: '#fff', borderRadius: 20, padding: '32px',
-                  border: '1px solid #E5E7EB', borderTop: '3px solid transparent',
-                  transition: 'all 0.25s ease', cursor: 'default',
-                  position: 'relative', overflow: 'hidden', height: '100%',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderTopColor = '#00B0ED'
-                  e.currentTarget.style.transform = 'translateY(-5px)'
-                  e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,176,237,0.12)'
-                }}
-                onMouseLeave={e => { e.currentTarget.style.borderTopColor = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
-                >
-                  <span style={{ position: 'absolute', right: -6, bottom: -10, fontSize: 100, fontWeight: 900, lineHeight: 1, color: 'rgba(0,176,237,0.04)', fontFamily: 'Plus Jakarta Sans', pointerEvents: 'none', userSelect: 'none' }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div style={{ width: 54, height: 54, borderRadius: 14, background: 'linear-gradient(135deg, rgba(0,176,237,0.13) 0%, rgba(0,176,237,0.04) 100%)', border: '1px solid rgba(0,176,237,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22, flexShrink: 0 }}>
-                    {s.icon}
+                <Link to={`/solutions#${s.slug}`} style={{ display: 'block', textDecoration: 'none', color: 'inherit', height: '100%' }}>
+                  <div style={{
+                    background: '#fff', borderRadius: 20, padding: '32px',
+                    border: '1px solid #E5E7EB', borderTop: '3px solid transparent',
+                    transition: 'all 0.25s ease', cursor: 'pointer',
+                    position: 'relative', overflow: 'hidden', height: '100%',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderTopColor = '#00B0ED'
+                    e.currentTarget.style.transform = 'translateY(-5px)'
+                    e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,176,237,0.12)'
+                  }}
+                  onMouseLeave={e => { e.currentTarget.style.borderTopColor = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
+                  >
+                    <span style={{ position: 'absolute', right: -6, bottom: -10, fontSize: 100, fontWeight: 900, lineHeight: 1, color: 'rgba(0,176,237,0.04)', fontFamily: 'Plus Jakarta Sans', pointerEvents: 'none', userSelect: 'none' }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div style={{ width: 54, height: 54, borderRadius: 14, background: 'linear-gradient(135deg, rgba(0,176,237,0.13) 0%, rgba(0,176,237,0.04) 100%)', border: '1px solid rgba(0,176,237,0.14)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22, flexShrink: 0 }}>
+                      {s.icon}
+                    </div>
+                    <h3 style={{ fontSize: 17, marginBottom: 10, lineHeight: 1.3 }}>{s.title}</h3>
+                    <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.75 }}>{s.desc}</p>
                   </div>
-                  <h3 style={{ fontSize: 17, marginBottom: 10, lineHeight: 1.3 }}>{s.title}</h3>
-                  <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.75 }}>{s.desc}</p>
-                </div>
+                </Link>
               </FadeUp>
             ))}
           </div>

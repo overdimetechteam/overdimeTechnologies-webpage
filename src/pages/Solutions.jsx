@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Zap, Bot, Globe, Database, TrendingUp, Users, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import { FadeUp } from '../components/Animate'
@@ -303,6 +303,18 @@ function SolutionCard({ sol, expanded, onToggle }) {
 
 export default function Solutions() {
   const [expanded, setExpanded] = useState('ipa')
+  const location = useLocation()
+
+  useEffect(() => {
+    const hash = location.hash.replace('#', '')
+    if (hash && solutions.find(s => s.id === hash)) {
+      setExpanded(hash)
+      setTimeout(() => {
+        const el = document.getElementById(hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 320)
+    }
+  }, [location.hash])
 
   return (
     <PageTransition>
@@ -319,13 +331,15 @@ export default function Solutions() {
         <section className="section" style={{ background: '#F0F2F5' }}>
           <div className="container">
             {solutions.map((sol, i) => (
-              <FadeUp key={sol.id} delay={i * 0.06}>
-                <SolutionCard
-                  sol={sol}
-                  expanded={expanded === sol.id}
-                  onToggle={() => setExpanded(expanded === sol.id ? null : sol.id)}
-                />
-              </FadeUp>
+              <div key={sol.id} id={sol.id} style={{ scrollMarginTop: 80 }}>
+                <FadeUp delay={i * 0.06}>
+                  <SolutionCard
+                    sol={sol}
+                    expanded={expanded === sol.id}
+                    onToggle={() => setExpanded(expanded === sol.id ? null : sol.id)}
+                  />
+                </FadeUp>
+              </div>
             ))}
           </div>
         </section>

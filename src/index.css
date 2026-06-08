@@ -359,6 +359,10 @@ textarea:focus {
 ::-webkit-scrollbar-track { background: var(--gray-100); }
 ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
 
+/* ──── Modal scroll — hidden scrollbar, scroll still works ──── */
+.modal-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+.modal-scroll::-webkit-scrollbar { display: none; }
+
 /* ──── Marquee ──── */
 @keyframes marquee {
   from { transform: translateX(0); }
