@@ -76,7 +76,7 @@ const testimonials = [
 ]
 
 const valueProps = [
-  { num: '01', title: 'What We Do',         accent: '#00B0ED', desc: 'We specialise in Intelligent Process Automation, AI-integrated solutions, custom web applications, and ERP implementations — creating practical digital solutions that transform how medium and large organisations operate.' },
+  { num: '01', title: 'What We Do',         accent: '#00B0ED', desc: 'We specialise in intelligent process automation, AI-integrated solutions, custom web applications, and ERP implementations — creating practical digital solutions that transform how medium and large organisations operate.' },
   { num: '02', title: 'Who We Serve',        accent: '#00B0ED', desc: 'Medium and large-scale enterprises in Sri Lanka and across global markets seeking scalable, results-driven digital transformation.' },
   { num: '03', title: 'Why Choose Overdime', accent: '#00B0ED', desc: 'Domain experts who understand real business challenges — many of our team members bring hands-on experience in building, managing, and scaling businesses, combining deep industry insight with international standards to deliver measurable business value.' },
 ]
@@ -426,11 +426,8 @@ export default function Home() {
                 <h2 style={{ fontSize: 'clamp(26px, 3.2vw, 42px)', marginBottom: 20, lineHeight: 1.15 }}>
                   Practical Digital Solutions That Transform Operations
                 </h2>
-                <p style={{ color: '#4B5563', fontSize: 16, lineHeight: 1.85, marginBottom: 16 }}>
-                  We specialise in Intelligent Process Automation, AI-integrated solutions, custom web applications, and ERP implementations — creating practical digital solutions that transform how medium and large organisations operate.
-                </p>
                 <p style={{ color: '#4B5563', fontSize: 16, lineHeight: 1.85, marginBottom: 36 }}>
-                  Domain experts who understand real business challenges — many of our team members bring hands-on experience in building, managing, and scaling businesses.
+                  We help enterprises work smarter by combining deep business understanding with intelligent automation, AI, and custom digital solutions. What sets us apart is our real-world industry experience. Our team includes professionals who have built, managed, and scaled businesses, giving us a practical understanding of operational challenges and opportunities. This enables us to design solutions that deliver measurable improvements in efficiency, visibility, control, and sustainable growth.
                 </p>
                 <Link to="/about" className="btn-secondary">Our Story <ChevronRight size={16} /></Link>
               </div>
