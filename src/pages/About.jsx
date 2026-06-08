@@ -234,7 +234,7 @@ export default function About() {
                   <div style={{ position: 'relative', zIndex: 1 }}>
                     {[
                       { to: 25,  suffix: '+',  label: 'Years of combined leadership experience in global enterprises', color: '#00B0ED' },
-                      { to: 3,   suffix: '+',  label: 'Enterprise organisations served, including publicly listed companies', color: '#062230' },
+                      { to: 70,  suffix: '+',  label: 'Intelligent automation & digital solutions delivered', sub: 'Trusted by leading Sri Lankan enterprises and global organisations.', color: '#062230' },
                       { to: 100, suffix: '%',  label: 'Commitment to practical, measurable outcomes', color: '#00B0ED' },
                     ].map((item, i) => (
                       <div key={i} style={{ marginBottom: i < 2 ? 32 : 0, paddingBottom: i < 2 ? 32 : 0, borderBottom: i < 2 ? '1px solid #E5E7EB' : 'none' }}>
@@ -242,6 +242,7 @@ export default function About() {
                           <AnimatedCounter to={item.to} suffix={item.suffix} duration={1.6} />
                         </div>
                         <div style={{ color: '#4B5563', fontSize: 15, lineHeight: 1.55 }}>{item.label}</div>
+                        {item.sub && <div style={{ color: '#9CA3AF', fontSize: 13, lineHeight: 1.5, marginTop: 4 }}>{item.sub}</div>}
                       </div>
                     ))}
                   </div>
@@ -256,7 +257,7 @@ export default function About() {
           <div className="cta-banner">
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 0%, #00B0ED 30%, #F4C95D 70%, transparent 100%)', zIndex: 2 }} />
             <div className="container">
-              <h2>Ready to Work With a Partner Who Truly Understands Your Business?</h2>
+              <h2>Ready to work with a partner who truly understands your business?</h2>
               <p>Let's have an open conversation about your goals and how intelligent solutions can help you achieve them.</p>
               <div className="btn-group">
                 <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>

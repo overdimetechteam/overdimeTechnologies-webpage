@@ -601,7 +601,7 @@ export default function Home() {
         <div className="cta-banner">
           <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 0%, #00B0ED 30%, #F4C95D 70%, transparent 100%)', zIndex: 2 }} />
           <div className="container">
-            <h2>Ready to Transform Your Operations?</h2>
+            <h2>Ready to transform your operations?</h2>
             <p>Let's discuss how intelligent automation can create real value for your organisation.</p>
             <div className="btn-group">
               <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>

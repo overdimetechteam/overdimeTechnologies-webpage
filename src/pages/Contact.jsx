@@ -277,7 +277,7 @@ export default function Contact() {
           <div className="cta-banner">
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 0%, #00B0ED 30%, #F4C95D 70%, transparent 100%)', zIndex: 2 }} />
             <div className="container">
-              <h2>Ready to Transform Your Operations?</h2>
+              <h2>Ready to transform your operations?</h2>
               <p>Our team is here to help you identify the right intelligent solutions for your business.</p>
               <div className="btn-group">
                 <a href="#form" className="btn-gold">Schedule a Free Consultation</a>

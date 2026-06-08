@@ -235,7 +235,7 @@ export default function Careers() {
           <div className="cta-banner">
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, transparent 0%, #00B0ED 30%, #F4C95D 70%, transparent 100%)', zIndex: 2 }} />
             <div className="container">
-              <h2>Ready to Shape the Future of Intelligent Automation?</h2>
+              <h2>Ready to shape the future of intelligent automation?</h2>
               <p>If you're excited about solving real business challenges with smart technology, we'd love to meet you.</p>
               <div className="btn-group">
                 <a href="#positions" className="btn-gold">View Open Positions</a>
