@@ -3,7 +3,6 @@ import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
-import TestimonialToast from './components/TestimonialToast'
 import Home from './pages/Home'
 import About from './pages/About'
 import Solutions from './pages/Solutions'
@@ -43,7 +42,6 @@ export default function App() {
             </main>
             <Footer />
             <WhatsAppFloat />
-            <TestimonialToast />
           </>
         } />
       </Routes>

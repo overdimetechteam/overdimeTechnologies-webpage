@@ -27,7 +27,7 @@ const stats = [
   { value: '30–50%', numericTo: null,  numericSuffix: '',  label: 'Average improvement in operational efficiency', accent: '#00B0ED' },
   { value: '100+',   numericTo: 100,   numericSuffix: '+', label: 'Projects delivered across industries',          accent: '#00B0ED' },
   { value: '25+',    numericTo: 25,    numericSuffix: '+', label: 'Years combined leadership experience',           accent: '#00B0ED' },
-  { value: '3+',     numericTo: 3,     numericSuffix: '+', label: 'Enterprise clients in Fortune segments',        accent: '#00B0ED' },
+  { value: '70+',    numericTo: 70,    numericSuffix: '+', label: 'Intelligent automation & digital solutions delivered', accent: '#00B0ED' },
 ]
 
 /* outcome: concise claim backed by published case study data */
