@@ -30,12 +30,19 @@ const stats = [
   { value: '70+',    numericTo: 70,    numericSuffix: '+', label: 'Intelligent automation & digital solutions delivered', accent: '#00B0ED' },
 ]
 
-/* outcome: concise claim backed by published case study data */
 const clients = [
-  { name: 'Dialog',             logo: asset('logos/dialog.jpg'),       outcome: '30%+ efficiency' },
-  { name: 'David Pieris',       logo: asset('logos/david_peiris.png'), outcome: '50% faster processes' },
-  { name: 'Colombo Fort Group', logo: asset('logos/cfgs.jpg'),         outcome: '45% less manual work' },
-  { name: 'Assetline',          logo: asset('logos/assetline.png'),    outcome: 'Automation partner' },
+  { name: 'Dialog',             logo: asset('logos/dialog.jpg')                  },
+  { name: 'David Pieris',       logo: asset('logos/david_peiris.png')            },
+  { name: 'Colombo Fort Group', logo: asset('logos/cfgs.jpg')                    },
+  { name: 'Assetline',          logo: asset('logos/assetline.png')               },
+  { name: 'Lankem Ceylon',      logo: asset('logos/Lankem-Ceylon.jpg')           },
+  { name: 'Nations Trust Bank', logo: asset('logos/Nations_Trust_Bank_logo.png') },
+  { name: 'Polydime',           logo: asset('logos/Polydime.png')                },
+  { name: 'Promise Land',       logo: asset('logos/Promise Land.png')            },
+  { name: 'Sri Lanka Telecom',  logo: asset('logos/Sri_Lanka_Telecom.png')       },
+  { name: 'Stredge',            logo: asset('logos/Stredge.png')                 },
+  { name: 'UNDP',               logo: asset('logos/UNDP.webp')                   },
+  { name: 'World Bank',         logo: asset('logos/World Bank.jpg')              },
 ]
 
 /* featured: true = blue top-border + "Partner" chip */
@@ -393,17 +400,14 @@ export default function Home() {
             <div className="marquee-inner">
               {[...clients, ...clients, ...clients, ...clients].map((c, i) => (
                 <div key={i} style={{
-                  display: 'inline-flex', flexDirection: 'column',
+                  display: 'inline-flex',
                   alignItems: 'center', justifyContent: 'center',
-                  height: 60, padding: '6px 20px 8px', marginRight: 14,
+                  width: 148, height: 64, padding: '10px 14px', marginRight: 14,
                   background: '#fff', borderRadius: 10, flexShrink: 0,
-                  gap: 5, boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
                   border: '1px solid rgba(0,0,0,0.07)',
                 }}>
-                  <img src={c.logo} alt={c.name} style={{ height: 22, maxWidth: 120, objectFit: 'contain' }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#062230', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-                    {c.outcome}
-                  </span>
+                  <img src={c.logo} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
               ))}
             </div>
