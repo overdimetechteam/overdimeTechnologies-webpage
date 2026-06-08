@@ -126,8 +126,7 @@ export default function About() {
           <div className="container">
             <FadeUp>
               <div style={{ textAlign: 'center', marginBottom: 60 }}>
-                <span className="section-label">Our Values</span>
-                <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)', marginTop: 10 }}>The Principles That Guide Everything We Do</h2>
+                <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>The Principles That Guide Everything We Do</h2>
               </div>
             </FadeUp>
             <div className="grid-4" style={{ alignItems: 'stretch' }}>
@@ -158,8 +157,7 @@ export default function About() {
           <div className="container">
             <FadeUp>
               <div style={{ textAlign: 'center', marginBottom: 60 }}>
-                <span className="section-label">Our Team</span>
-                <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)', marginTop: 10 }}>The People Behind the Solutions</h2>
+                <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>The People Behind the Solutions</h2>
               </div>
             </FadeUp>
             <div className="grid-3" style={{ alignItems: 'stretch' }}>
