@@ -544,8 +544,7 @@ export default function Home() {
         <div className="container">
           <FadeUp>
             <div style={{ textAlign: 'center', marginBottom: 52 }}>
-              <span className="section-label">What Our Clients Say</span>
-              <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)', marginTop: 10 }}>Trusted by Industry Leaders</h2>
+              <h2 style={{ fontSize: 'clamp(24px, 3vw, 40px)' }}>Trusted by Industry Leaders</h2>
             </div>
           </FadeUp>
           <FadeUp delay={0.1}>
