@@ -70,10 +70,10 @@ export default function ThankYou() {
               <div style={{ background: '#fff', borderRadius: 16, padding: 28, marginBottom: 32, boxShadow: '0 2px 12px rgba(10,37,64,0.06)' }}>
                 <p style={{ color: '#062230', fontWeight: 600, fontSize: 15, marginBottom: 16 }}>Need to reach us sooner?</p>
                 <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="tel:+94777751445" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#FAF7F2', borderRadius: 10, color: '#062230', fontWeight: 600, fontSize: 14, border: '1px solid #E5E7EB' }}>
-                    <Phone size={16} color="#00B0ED" /> +94 777 751 445
+                  <a href="tel:+94772414208" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#FAF7F2', borderRadius: 10, color: '#062230', fontWeight: 600, fontSize: 14, border: '1px solid #E5E7EB' }}>
+                    <Phone size={16} color="#00B0ED" /> +94 772 414 208
                   </a>
-                  <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#25D366', borderRadius: 10, color: '#fff', fontWeight: 600, fontSize: 14 }}>
+                  <a href="https://wa.me/94772414208" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#25D366', borderRadius: 10, color: '#fff', fontWeight: 600, fontSize: 14 }}>
                     <MessageCircle size={16} /> WhatsApp
                   </a>
                 </div>

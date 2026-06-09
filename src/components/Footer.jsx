@@ -84,9 +84,9 @@ export default function Footer() {
                 <Mail size={15} style={{ marginTop: 2, flexShrink: 0, color: '#00B0ED' }} />
                 info@overdimetechnologies.com
               </a>
-              <a href="tel:+94777751445" style={{ ...linkStyle, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <a href="tel:+94772414208" style={{ ...linkStyle, display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Phone size={15} style={{ flexShrink: 0, color: '#00B0ED' }} />
-                +94 777 751 445
+                +94 772 414 208
               </a>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255,255,255,0.55)', fontSize: 14 }}>
                 <MapPin size={15} style={{ marginTop: 2, flexShrink: 0, color: '#00B0ED' }} />

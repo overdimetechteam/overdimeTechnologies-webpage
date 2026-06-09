@@ -309,7 +309,7 @@ export default function Home() {
               <Link to="/contact" className="btn-primary" style={{ fontSize: 15 }}>
                 Schedule a Free Consultation <ArrowRight size={16} />
               </Link>
-              <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-gold" style={{ fontSize: 15 }}>
+              <a href="https://wa.me/94772414208" target="_blank" rel="noreferrer" className="btn-gold" style={{ fontSize: 15 }}>
                 Chat with Us
               </a>
             </div>
@@ -607,7 +607,7 @@ export default function Home() {
             <p>Let's discuss how intelligent automation can create real value for your organisation.</p>
             <div className="btn-group">
               <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
-              <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Chat with Us</a>
+              <a href="https://wa.me/94772414208" target="_blank" rel="noreferrer" className="btn-outline-white">Chat with Us</a>
             </div>
           </div>
         </div>

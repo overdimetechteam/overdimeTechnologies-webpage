@@ -66,7 +66,7 @@ export default function WhatsAppFloat() {
 
       {/* Button */}
       <a
-        href="https://wa.me/94777751445"
+        href="https://wa.me/94772414208"
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"

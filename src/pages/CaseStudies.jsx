@@ -366,7 +366,7 @@ export default function CaseStudies() {
               <p>Let's explore how we can deliver measurable results for your organisation.</p>
               <div className="btn-group">
                 <Link to="/contact" className="btn-gold">Schedule a Free Consultation</Link>
-                <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" className="btn-outline-white">Chat with Us</a>
+                <a href="https://wa.me/94772414208" target="_blank" rel="noreferrer" className="btn-outline-white">Chat with Us</a>
               </div>
             </div>
           </div>

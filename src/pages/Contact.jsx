@@ -216,7 +216,7 @@ export default function Contact() {
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 40 }}>
                     <ContactItem icon={<Mail size={18} color="#00B0ED" />} label="Email" value="info@overdimetechnologies.com" href="mailto:info@overdimetechnologies.com" />
-                    <ContactItem icon={<Phone size={18} color="#00B0ED" />} label="Phone" value="+94 777 751 445" href="tel:+94777751445" />
+                    <ContactItem icon={<Phone size={18} color="#00B0ED" />} label="Phone" value="+94 772 414 208" href="tel:+94772414208" />
                     <ContactItem icon={<MapPin size={18} color="#00B0ED" />} label="Address" value="122 Stratford Avenue, Kirulapone, Colombo 06, Sri Lanka" />
                     <ContactItem icon={<Clock size={18} color="#00B0ED" />} label="Business Hours" value="Monday to Friday, 9:00 AM – 6:00 PM (Sri Lanka Time, UTC+5:30)" note="Flexible for international clients across time zones." />
                   </div>
@@ -224,7 +224,7 @@ export default function Contact() {
                   <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: 32 }}>
                     <h4 style={{ fontSize: 15, marginBottom: 16, color: '#062230' }}>Additional Ways to Connect</h4>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                      <a href="https://wa.me/94777751445" target="_blank" rel="noreferrer" style={{
+                      <a href="https://wa.me/94772414208" target="_blank" rel="noreferrer" style={{
                         display: 'flex', alignItems: 'center', gap: 12,
                         padding: '14px 20px', background: '#25D366', color: '#fff',
                         borderRadius: 12, fontWeight: 600, fontSize: 14, textDecoration: 'none',
