@@ -152,7 +152,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* ── Team ── */}
+        {/* ── Team (hidden) ──
         <section className="section" id="team" style={{ background: '#fff' }}>
           <div className="container">
             <FadeUp>
@@ -194,7 +194,6 @@ export default function About() {
                     <h3 style={{ fontSize: 19, marginBottom: 4 }}>{member.name}</h3>
                     <div style={{ color: '#00B0ED', fontSize: 13, fontWeight: 600, marginBottom: 16 }}>{member.role}</div>
                     <p style={{ color: '#4B5563', fontSize: 14, lineHeight: 1.75, marginBottom: 0, flexGrow: 1 }}>{member.bio}</p>
-                    {/* Bottom accent strip */}
                     <div style={{ height: 4, background: `linear-gradient(90deg, ${member.accent}, transparent)`, marginTop: 28, marginLeft: -28, marginRight: -28, flexShrink: 0 }} />
                   </div>
                 </FadeUp>
@@ -202,6 +201,7 @@ export default function About() {
             </div>
           </div>
         </section>
+        ── End Team ── */}
 
         {/* ── Why Choose Overdime ── */}
         <section className="section" style={{ background: '#F0F2F5', position: 'relative', isolation: 'isolate' }}>
