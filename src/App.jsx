@@ -31,7 +31,7 @@ function PublicRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter basename="/overdimeTechnologies-webpage">
+    <BrowserRouter>
       <Routes>
         <Route path="/admin" element={<Admin />} />
         <Route path="/*" element={
